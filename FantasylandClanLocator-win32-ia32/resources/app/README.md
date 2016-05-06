@@ -1,1 +1,0 @@
-# fantasyland-clan-locator
