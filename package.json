@@ -13,6 +13,7 @@
     "a2-in-memory-web-api": "^0.1.16",
     "angular2": "2.0.0-beta.16",
     "bootstrap": "^3.3.6",
+    "electron-compile": "^3.1.0",
     "es6-shim": "^0.35.0",
     "moment": "^2.13.0",
     "reflect-metadata": "0.1.2",
