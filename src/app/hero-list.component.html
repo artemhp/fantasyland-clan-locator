@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <div class="">
+          <button type="button" class="btn btn-sm btn-primary" (click)="refreshList()" name="button">Update</button>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <select [(ngModel)]="model.clan" (ngModelChange)="clanChange()" class="form-control" required>
+          <option *ngFor="#p of clanList" [value]="p.id">{{p.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xs-4" *ngIf="heroes">
+      <div class="">
+        Всего в клане:
+        {{heroes.length}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container container-heroes-wrap">
+  <div *ngFor="#hero of heroes | sortArray: 'date'" class="row">
+    <div class="col-xs-1">
+      [Lvl:{{hero.level}}]
+    </div>
+    <div class="col-xs-2">
+        <guild *ngFor="#guild of hero.guild" guildId="{{guild}}"></guild>
+    </div>
+    <div class="col-xs-3">
+      <span [heroStyle]="hero" class="hero-login">{{ hero.name }}</span>
+    </div>
+    <div class="col-xs-1">
+      <a href="http://fantasyland.ru/cgi/pl_info.php?login={{ hero.name }}" target="_blank">
+        <img src="http://fantasyland.ru/images/miscellaneous/info_{{hero.gender}}.gif" alt=""/>
+      </a>
+      <a style="margin-left: 5px;" *ngIf="hero.combat !== '0'" target="_blank" href="http://fantasyland.ru/cgi/pl_combat.php?num={{hero.combat}}">
+          <img src="http://fantasyland.ru/images/status/ch_combat.gif" alt="" />
+      </a>
+    </div>
+    <div class="col-xs-3">
+        <div *ngIf="hero.location1 == 'Unknown'">
+            <em>
+                <small>Неизвестно</small>
+            </em>
+        </div>
+        <hero-location
+            *ngIf="hero.location1 !== 'Unknown'"
+            roomDataBase="{{roomStatus}}"
+            locationDataBase="{{locationStatus}}"
+            heroLocation="{{hero.location1}}"
+            heroRoom="{{hero.location2}}">
+        </hero-location>
+    </div>
+    <div class="col-xs-2">
+        <div class="" *ngIf="hero.location1 !== 'Unknown'">
+            <span *ngIf="hero.status" class="text-success">Онлайн</span>
+            <span class="text-danger" *ngIf="!hero.status">{{ hero.date.lang("ru").fromNow() }}</span>
+        </div>
+        <div *ngIf="hero.location1 == 'Unknown'">
+            <em>
+                <small>Неизвестно</small>
+            </em>
+        </div>
+    </div>
+
+  </div>
+</div>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
