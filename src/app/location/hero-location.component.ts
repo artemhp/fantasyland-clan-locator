@@ -1,10 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HeroLocationService}   from './hero-location.service';
-import {StorageService}   from './storage.service';
+import {StorageService}   from '../shared/storage.service';
 
 @Component({
   selector: 'hero-location',
-  template: require('app/hero-location.component.html'),
+  template: require('app/location/hero-location.component.html'),
   inputs: [
       '_locationId: heroLocation',
       '_roomId: heroRoom',

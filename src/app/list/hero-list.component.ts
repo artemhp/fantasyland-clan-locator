@@ -1,14 +1,14 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Hero}              from './hero';
+import {Hero}              from '../heroes/hero';
 
-import {HeroService}       from './clan.service';
-import {ClanListService}   from './clan-list.service';
-import {HeroLocationService}   from './hero-location.service';
-import {StorageService}   from './storage.service';
+import {HeroService}       from '../clans/clan.service';
+import {ClanListService}   from '../clans/clan-list.service';
+import {HeroLocationService}   from '../location/hero-location.service';
+import {StorageService}   from '../shared/storage.service';
 
-import {HeroStyleDirective}   from './hero.directive';
-import {HeroLocationComponent}   from './hero-location.component';
-import {HeroGuildComponent}   from './hero-guild.component';
+import {HeroStyleDirective}   from '../heroes/hero.directive';
+import {HeroLocationComponent}   from '../location/hero-location.component';
+import {HeroGuildComponent}   from '../heroes/hero-guild.component';
 
 import {SortArray}   from './sortArray.pipe';
 
@@ -17,7 +17,7 @@ declare var moment: any;
 
 @Component({
   selector: 'hero-list',
-  template: require('app/hero-list.component.html'),
+  template: require('app/list/hero-list.component.html'),
   styles: ['.error {color:red;}'],
   providers: [HeroService, ClanListService, HeroLocationService],
   directives: [HeroStyleDirective, HeroLocationComponent, HeroGuildComponent],

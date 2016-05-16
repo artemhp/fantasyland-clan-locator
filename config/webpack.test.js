@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass
+ * @author: artemhp
  */
 
 const helpers = require('./helpers');

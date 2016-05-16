@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {UiFunctions}   from './ui-functions.service';
+import {UiFunctions}   from '../shared/ui-functions.service';
 
 @Component({
   selector: 'guild',
-  template: require('app/hero-guild.component.html'),
+  template: require('app/heroes/hero-guild.component.html'),
   inputs: [
     '_guildId: guildId'
   ]

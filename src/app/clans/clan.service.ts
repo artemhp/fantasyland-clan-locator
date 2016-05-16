@@ -1,7 +1,7 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Headers, RequestOptions} from '@angular/http';
-import {Hero}           from './hero';
+import {Hero}           from '../heroes/hero';
 import {Observable}     from 'rxjs/Observable';
 declare var moment: any;
 

@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass
+ * @author: artemhp
  */
 
 const webpack = require('webpack');
@@ -245,8 +245,9 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      inject: true,
       chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
-    })
+  }),
 
   ],
 

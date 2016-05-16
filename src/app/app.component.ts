@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { HeroListComponent } from './hero-list.component';
+import { HeroListComponent } from './list/hero-list.component';
 
-import {Hero} from './hero';
+import {Hero} from './heroes/hero';
 
 @Component({
   selector: 'app',
