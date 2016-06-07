@@ -1,11 +1,18 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
 
+import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
 // Add all operators to Observable
-import 'rxjs/Rx';
-import {AppComponent} from './app/app.component';
+// import 'rxjs/Rx';
+import {AppComponent, APP_PROVIDERS} from './app';
 import { HTTP_PROVIDERS } from '@angular/http';
-import {StorageService}   from './app/shared/storage.service';
-import {UiFunctions}   from './app/shared/ui-functions.service';
+
 // import moment = require("moment");
 
-bootstrap(AppComponent, [HTTP_PROVIDERS, StorageService, UiFunctions]);
+bootstrap(AppComponent,
+  [
+    ...PROVIDERS,
+    ...DIRECTIVES,
+    ...PIPES,
+    ...APP_PROVIDERS
+  ]
+  );

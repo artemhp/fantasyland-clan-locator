@@ -47,6 +47,7 @@ export class HeroService {
         var gender = myRegexp4.exec(list[list.length - 1]);
 
         var status = match1[1].split("#");
+        // console.log(match1[1]);
         var statusOnline = false;
 
         if (status[0] && status[0] == "1") {
@@ -60,6 +61,7 @@ export class HeroService {
           status: statusOnline,
           location1: status[1],
           location2: status[2],
+          location: match1[1],
           combat: match1[4],
           date: moment(match1[3] + " +03:00", "YYYY-MM-DD hh:mm:ss Z"),
           style: match2[4],
@@ -70,7 +72,6 @@ export class HeroService {
         };
         arrayHerroes.push(generateObj);
       } else {
-        // console.log(match2);
         if (match2) {
 
           var myRegexp3 = /,"[\w\u0400-\u04FF\.\ \-)\[\]0-9&;’\s]+",/gi;
@@ -85,6 +86,7 @@ export class HeroService {
             status: false,
             location1: "Unknown",
             location2: "Unknown",
+            location: "Unknown",
             combat: "0",
             date: moment("2051-05-03 16:05:10 +03:00", "YYYY-MM-DD hh:mm:ss Z"),
             style: match2[4],
@@ -99,13 +101,12 @@ export class HeroService {
 
       }
     });
-    console.log(arrayHerroes);
     return arrayHerroes || {};
   }
   private handleError(error: any) {
     // In a real world app, we might send the error to remote logging infrastructure
     let errMsg = error.message || 'Server error';
-    console.error(errMsg); // log to console instead
+    // console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
 

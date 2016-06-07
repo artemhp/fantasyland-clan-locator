@@ -76,8 +76,8 @@ export class HeroListComponent implements OnInit {
 
   showDIff(el) {
     if (this.heroes[el]) {
-      var a = this.heroes[el].date;
-      var b = moment();
+      let a = this.heroes[el].date;
+      let b = moment();
       return b.diff(a, 'days') // 86400000;
     } else {
       return 10000000;

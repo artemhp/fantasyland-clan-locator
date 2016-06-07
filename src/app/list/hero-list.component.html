@@ -8,7 +8,7 @@
     <div class="col-xs-6">
       <div class="form-group">
         <select [(ngModel)]="model.clan" (ngModelChange)="clanChange()" class="form-control" required>
-          <option *ngFor="#p of clanList" [value]="p.id">{{p.name}}</option>
+          <option *ngFor="let p of clanList" [value]="p.id">{{p.name}}</option>
         </select>
       </div>
     </div>
@@ -17,16 +17,20 @@
         Всего в клане:
         {{heroes.length}}
       </div>
+      <div class="">
+        Онлайн в клане:
+        {{heroes.length}}
+      </div>
     </div>
   </div>
 </div>
 <div class="container container-heroes-wrap">
-  <div *ngFor="#hero of heroes | sortArray: 'date'" class="row">
+  <div *ngFor="let hero of heroes | sortArray: 'location'" class="row">
     <div class="col-xs-1">
       [Lvl:{{hero.level}}]
     </div>
     <div class="col-xs-2">
-        <guild *ngFor="#guild of hero.guild" guildId="{{guild}}"></guild>
+        <guild *ngFor="let guild of hero.guild" guildId="{{guild}}"></guild>
     </div>
     <div class="col-xs-3">
       <span [heroStyle]="hero" class="hero-login">{{ hero.name }}</span>
@@ -39,7 +43,7 @@
           <img src="http://fantasyland.ru/images/status/ch_combat.gif" alt="" />
       </a>
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-3 truncate">
         <div *ngIf="hero.location1 == 'Unknown'">
             <em>
                 <small>Неизвестно</small>
@@ -56,7 +60,7 @@
     <div class="col-xs-2">
         <div class="" *ngIf="hero.location1 !== 'Unknown'">
             <span *ngIf="hero.status" class="text-success">Онлайн</span>
-            <span class="text-danger" *ngIf="!hero.status">{{ hero.date.lang("ru").fromNow() }}</span>
+            <span class="text-danger" *ngIf="!hero.status">{{ hero.date.locale("ru").fromNow() }}</span>
         </div>
         <div *ngIf="hero.location1 == 'Unknown'">
             <em>

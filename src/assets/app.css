@@ -1,0 +1,47 @@
+body {
+  background-color: #a6a6a6;
+  background-image: url(http://fantasyland.ru/images/pic/bg.jpg);
+  color: #F5F5F5;
+  padding: 1em;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.bolditalic {
+  font-weight: bold;
+  font-style: italic;
+}
+.container {}
+.container-heroes-wrap {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background-color: #a6a6a6;
+  background-image: url("http://fantasyland.ru/images/pic/bg_title.jpg");
+}
+.container-heroes-wrap .row:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+.container-heroes-wrap .row:nth-of-type(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+.hero-login {
+  background-color: #a6a6a6;
+ /*-webkit-text-stroke: 1px #a6a6a6;*/
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+.text-success {
+  color: #95FF7A;
+}
+.text-danger {
+  color: #d2d2d2;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
