@@ -11,25 +11,7 @@ import { About } from './pages/about';
   pipes: [],
   providers: [],
   encapsulation: ViewEncapsulation.None,
-  template: `
-  <div class="text-right">
-      <span router-active>
-        </span>
-        <span router-active>
-          <button class="btn btn-default btn-sm" [routerLink]=" ['Home'] ">
-            Clan Locator
-          </button>
-        </span>
-        <span router-active>
-          <button [routerLink]=" ['About'] " class="btn btn-default btn-sm">
-            About
-          </button>
-        </span>
-    </div>
-
-    <router-outlet></router-outlet>
-
-  `,
+  template: require('app/app.html'),
   directives: [RouterActive]
 })
 
