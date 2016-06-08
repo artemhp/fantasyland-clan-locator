@@ -11,6 +11,7 @@ import {HeroLocationComponent}   from '../location/hero-location.component';
 import {HeroGuildComponent}   from '../heroes/hero-guild.component';
 
 import {SortArray}   from './sortArray.pipe';
+import {FilterHeroesByOnline}   from './filterHeroesByOnline.pipe';
 
 declare var moment: any;
 
@@ -21,7 +22,7 @@ declare var moment: any;
   styles: ['.error {color:red;}'],
   providers: [HeroService, ClanListService, HeroLocationService],
   directives: [HeroStyleDirective, HeroLocationComponent, HeroGuildComponent],
-  pipes : [SortArray]
+  pipes : [SortArray, FilterHeroesByOnline]
 })
 
 export class HeroListComponent implements OnInit {
@@ -32,11 +33,14 @@ export class HeroListComponent implements OnInit {
     ) { }
   errorMessage: string;
   heroes: Hero[];
+  heroesOnline;
+  sortList;
   clanList: any = [];
   locations: any;
   rooms: any;
   model: any = {
-    clan: 109
+    clan: 109,
+    sortBy: 'date'
   };
 
   roomStatus: boolean = false;
@@ -53,6 +57,8 @@ export class HeroListComponent implements OnInit {
   ngOnInit() {
     this.getHeroes(this.model.clan);
     this.clanList = this._storageService.clans;
+    this.sortList = [{'sort':'location', 'name': 'По локации'}, {'sort':'date', 'name': 'По времени'}];
+
 
     this._heroLocationService.getLocations()
       .subscribe(
@@ -69,7 +75,10 @@ export class HeroListComponent implements OnInit {
 
   getHeroes(el) {
     this._heroService.getHeroes(el).subscribe(
-      heroes => {this.heroes = heroes},
+      heroes => {
+          this.heroes = heroes;
+          this.heroesOnline = new FilterHeroesByOnline().transform(heroes, []).length;
+      },
       error => {this.errorMessage = <any>error}
       );
   }

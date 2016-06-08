@@ -12,20 +12,25 @@
         </select>
       </div>
     </div>
-    <div class="col-xs-4" *ngIf="heroes">
+    <div class="col-xs-2" *ngIf="heroes">
       <div class="">
         Всего в клане:
         {{heroes.length}}
       </div>
       <div class="">
         Онлайн в клане:
-        {{heroes.length}}
+        {{heroesOnline}}
       </div>
+    </div>
+    <div class="col-xs-2">
+        <select [(ngModel)]="model.sortBy" class="form-control">
+          <option *ngFor="let p of sortList" [value]="p.sort">{{p.name}}</option>
+        </select>
     </div>
   </div>
 </div>
 <div class="container container-heroes-wrap">
-  <div *ngFor="let hero of heroes | sortArray: 'location'" class="row">
+  <div *ngFor="let hero of heroes | sortArray: model.sortBy" class="row">
     <div class="col-xs-1">
       [Lvl:{{hero.level}}]
     </div>
