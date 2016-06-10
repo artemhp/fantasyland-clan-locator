@@ -1,5 +1,5 @@
 /**
- * @author: artemhp
+ * @author: @AngularClass
  */
 
 const webpack = require('webpack');
@@ -8,7 +8,8 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// problem with copy-webpack-plugin
+var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
@@ -16,7 +17,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Clan Locator',
+  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
   baseUrl: '/'
 };
 
@@ -40,8 +41,10 @@ module.exports = {
    * You can pass false to disable it.
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
-   * cache: false,
-   *
+   */
+   //cache: false,
+
+  /*
    * The entry point for the bundle
    * Our Angular.js app
    *
@@ -76,14 +79,8 @@ module.exports = {
     modulesDirectories: ['node_modules'],
 
     alias: {
-      'angular2/core': helpers.root('node_modules/@angular/core/index.js'),
-      'angular2/testing': helpers.root('node_modules/@angular/core/testing.js'),
-      '@angular/testing': helpers.root('node_modules/@angular/core/testing.js'),
-      'angular2/platform/browser': helpers.root('node_modules/@angular/platform-browser/index.js'),
-      'angular2/testing': helpers.root('node_modules/@angular/testing/index.js'),
-      'angular2/router': helpers.root('node_modules/@angular/router-deprecated/index.js'),
-      'angular2/http': helpers.root('node_modules/@angular/http/index.js'),
-      'angular2/http/testing': helpers.root('node_modules/@angular/http/testing.js')
+      // legacy imports pre-rc releases
+      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17')
     },
 
   },
@@ -121,7 +118,6 @@ module.exports = {
         exclude: [
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular2-material'),
           helpers.root('node_modules/@angular'),
         ]
       }
@@ -219,7 +215,7 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor'])
+      name: ['polyfills', 'vendor'].reverse()
     }),
 
     /*
@@ -245,9 +241,8 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      inject: true,
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
-  }),
+      chunksSortMode: 'dependency'
+    })
 
   ],
 

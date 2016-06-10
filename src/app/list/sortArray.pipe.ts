@@ -1,46 +1,62 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import 'rxjs/Rx';
+import {Hero} from '../heroes/hero';
 
 @Pipe({
   name: 'sortArray'
 })
 
 export class SortArray implements PipeTransform {
-  transform(value: Array<any>, args) {
-    var sorByDate = function(a, b) {
-        if (a['date'] < b['date']) return 1;
-        if (a['date'] > b['date']) return -1;
+  transform(value: Array<any>, args: string) {
+
+    var sorByDate = function(a: Hero, b: Hero) {
+      if (a['date'] < b['date']) return 1;
+      if (a['date'] > b['date']) return -1;
     };
+
     if (value && args == "date") {
       value.sort(sorByDate);
-  } else if (value && args == "location") {
-      var result = [];
-      var counts = {};
+    } else if (value && args == "location") {
+
+      let groupByLocation: Array<any> = [];
+      let result: Array<Hero> = [];
+
       value.map(function(el) {
-        var tt = 1;
-        var pp = [];
-        if (counts[el.location1 + " " + el.location2]) {
-          tt = (counts[el.location1 + " " + el.location2]['count'] || 0) + 1;
-          if (counts[el.location1 + " " + el.location2]['heroes'].length) {
-            pp = (counts[el.location1 + " " + el.location2]['heroes']);
-            pp.push(el);
+
+        var countHeroesInLocation: number = 1;
+        var collectionHeroes: Array<Hero> = [];
+
+        if (groupByLocation[el.location1 + " " + el.location2]) {
+          countHeroesInLocation = (groupByLocation[el.location1 + " " + el.location2]['count'] || 0) + 1;
+          if (groupByLocation[el.location1 + " " + el.location2]['heroes'].length) {
+            collectionHeroes = (groupByLocation[el.location1 + " " + el.location2]['heroes']);
+            collectionHeroes.push(el);
           } else {
-            pp = [el];
+            collectionHeroes = [el];
           }
+        } else {
+          countHeroesInLocation = 1;
+          collectionHeroes = [el];
         }
-        counts[el.location1 + " " + el.location2] = { 'count': tt, 'heroes': pp };
+
+        groupByLocation[el.location1 + " " + el.location2] = { 'count': countHeroesInLocation, 'heroes': collectionHeroes };
       });
-      var sortable = [];
-      for (var loc in counts) {
-          counts[loc]['heroes'].sort(sorByDate);
-        sortable.push([loc, counts[loc]['count'], counts[loc]['heroes']]);
-      }
-      sortable.sort(function(a, b) { return b[1] - a[1] });
-      sortable.map(function(el) {
-        el[2].map(function(el2) {
-          result.push(el2);
+
+      if (groupByLocation) {
+        let sortable: Array<any> = [];
+        for (let loc in groupByLocation) {
+          groupByLocation[loc]['heroes'].sort(sorByDate);
+          sortable.push([loc, groupByLocation[loc]['count'], groupByLocation[loc]['heroes']]);
+        }
+        sortable.sort(function(a, b) {
+          return b[1] - a[1]
         });
-      });
+        sortable.map(function(el) {
+          el[2].map(function(el2) {
+            result.push(el2);
+          });
+        });
+      }
+
       value = result;
     }
     return value;

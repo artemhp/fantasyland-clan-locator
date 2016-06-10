@@ -1,5 +1,5 @@
 /**
- * @author: artemhp
+ * @author: @AngularClass
  */
 
 const helpers = require('./helpers');
@@ -66,7 +66,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-filename
      */
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].bundle.js',
 
     /**
      * The filename of the SourceMaps for the JavaScript files.
@@ -74,7 +74,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
      */
-    sourceMapFilename: '[name].bundle.map',
+    sourceMapFilename: '[name].[chunkhash].bundle.map',
 
     /**
      * The filename of non-entry chunks as relative path
@@ -82,7 +82,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].[chunkhash].chunk.js'
 
   },
 
@@ -166,7 +166,7 @@ module.exports = webpackMerge(commonConfig, {
       }, //prod
 
       comments: false //prod
-    })
+    }),
 
     /**
      * Plugin: CompressionPlugin
@@ -175,10 +175,10 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: https://github.com/webpack/compression-webpack-plugin
      */
-    // new CompressionPlugin({
-    //   regExp: /\.css$|\.html$|\.js$|\.map$/,
-    //   threshold: 2 * 1024
-    // })
+    new CompressionPlugin({
+      regExp: /\.css$|\.html$|\.js$|\.map$/,
+      threshold: 2 * 1024
+    })
 
   ],
 

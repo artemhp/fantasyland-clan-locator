@@ -1,6 +1,6 @@
 export class Hero {
   id: number;
-  name: string;
+  // name: string;
   status: boolean;
   location1: string;
   location2: string;
