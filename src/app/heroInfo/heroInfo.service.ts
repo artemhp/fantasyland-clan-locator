@@ -28,9 +28,6 @@ export class HeroInfoService {
     let data = res['_body'];
     data = data.replace(/src=['"](..)?(\/)?images\/([0-9a-z. а-яA-ZА-Я_\-\/]+)['"]/gi, "src='http://fantasyland.ru/images/$3'");
 
-    console.log(data);
-    debugger;
-
     let getLevelComplect = jQuery(data).find("[height=225][width=50][rowspan=5][valign='top'][align='center']").find("img").prop("title").split(" :: Уровень обмундирования: ")[1];
     // console.log(data);
 
