@@ -32,59 +32,59 @@
   </div>
 </div>
 <div class="container container-heroes-wrap">
-  <div *ngFor="let hero of heroes | sortArray: model.sortBy" class="row">
-    <div class="col-xs-1">
-      <hero-info *ngIf="hero.status" heroStatus="{{hero.status}}" heroId="{{hero.name}}"></hero-info>
-    </div>
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-2">
-          [Lvl:{{hero.level}}]
-        </div>
-        <div class="col-xs-4">
-          <guild *ngFor="let guild of hero.guild" guildId="{{guild}}"></guild>
-        </div>
-        <div class="col-xs-6">
-          <span [heroStyle]="{style: hero.style, color: hero.color}" class="hero-login">{{ hero.name }}</span>
+  <div *ngFor="let hero of heroes | sortArray: model.sortBy">
+    <div  class="row">
+      <div class="col-xs-5">
+        <div class="row">
+          <div class="col-xs-2">
+            [Lvl:{{hero.level}}]
+          </div>
+          <div class="col-xs-4">
+            <guild *ngFor="let guild of hero.guild" guildId="{{guild}}"></guild>
+          </div>
+          <div class="col-xs-6">
+            <span [heroStyle]="{style: hero.style, color: hero.color}" class="hero-login">{{ hero.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-xs-1">
-      <a href="http://fantasyland.ru/cgi/pl_info.php?login={{ hero.name }}" target="_blank">
-        <img src="http://fantasyland.ru/images/miscellaneous/info_{{hero.gender}}.gif" alt=""/>
-      </a>
-      <a style="margin-left: 5px;" *ngIf="hero.combat !== '0'" target="_blank" href="http://fantasyland.ru/cgi/pl_combat.php?num={{hero.combat}}">
+      <div class="col-xs-1">
+        <a href="http://fantasyland.ru/cgi/pl_info.php?login={{ hero.name }}" target="_blank">
+          <img src="http://fantasyland.ru/images/miscellaneous/info_{{hero.gender}}.gif" alt=""/>
+        </a>
+        <a style="margin-left: 5px;" *ngIf="hero.combat !== '0'" target="_blank" href="http://fantasyland.ru/cgi/pl_combat.php?num={{hero.combat}}">
           <img src="http://fantasyland.ru/images/status/ch_combat.gif" alt="" />
-      </a>
-    </div>
-    <div class="col-xs-3 truncate">
+        </a>
+      </div>
+      <div class="col-xs-3 truncate">
         <div *ngIf="hero.location1 == 'Unknown'">
-            <em>
-                <small>Неизвестно</small>
-            </em>
+          <em>
+            <small>Неизвестно</small>
+          </em>
         </div>
         <hero-location
-            *ngIf="hero.location1 !== 'Unknown'"
-            roomDataBase="{{roomStatus}}"
-            locationDataBase="{{locationStatus}}"
-            heroLocation="{{hero.location1}}"
-            heroRoom="{{hero.location2}}">
+          *ngIf="hero.location1 !== 'Unknown'"
+          roomDataBase="{{roomStatus}}"
+          locationDataBase="{{locationStatus}}"
+          heroLocation="{{hero.location1}}"
+          heroRoom="{{hero.location2}}">
         </hero-location>
-    </div>
-    <div class="col-xs-2">
+      </div>
+      <div class="col-xs-2">
         <div class="" *ngIf="hero.location1 !== 'Unknown'">
-            <span *ngIf="hero.status" class="text-success">Онлайн</span>
+          <span *ngIf="hero.status" class="text-success">Онлайн</span>
             <span class="text-danger" *ngIf="!hero.status">
               {{ hero.date.locale("ru").fromNow() }}
             </span>
         </div>
         <div *ngIf="hero.location1 == 'Unknown'">
-            <em>
-                <small>Неизвестно</small>
-            </em>
+          <em>
+            <small>Неизвестно</small>
+          </em>
         </div>
+      </div>
     </div>
+    <hero-info *ngIf="hero.status" heroStatus="{{hero.status}}" heroId="{{hero.name}}"></hero-info>
 
   </div>
 </div>

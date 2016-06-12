@@ -1,5 +1,17 @@
-<div class="hero-info-link">
-  У.О.
-  <strong>{{lvl}}</strong>
-  <!--<div class="hero-info-block"></div>-->
+<div class="row">
+  <div class="col-xs-1">
+    <img src="http://fantasyland.ru/images/players_mini/{{avaSmall}}" alt="">
+  </div>
+  <div class="col-xs-1">
+    <strong>{{lvl}}</strong>
+  </div>
+  <div class="col-xs-3">
+    <div>
+      <img *ngFor="let medal of medals" src="http://fantasyland.ru/images/medals/{{medal}}" alt="">
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div [innerHTML]="getStats">
+    </div>
+  </div>
 </div>

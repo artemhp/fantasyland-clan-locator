@@ -1,0 +1,1533 @@
+<HTML>
+
+<HEAD>
+  <TITLE>Информация об игроке Хитрая_Лиса</TITLE>
+  <link rel="stylesheet" type="text/css" href="../css/styles1.css">
+
+</HEAD>
+
+<BODY text=#FFFFFF link=#F9FBA8 vlink=#F9FBA8 alink=#FFFFFF>
+<SCRIPT src="w.JS"></SCRIPT>
+<SCRIPT src="pl_info.js"></SCRIPT>
+<script type='text/javascript' src='tooltip.js'></script>
+<script type='text/javascript' src="ajax.js"></script>
+
+<script type='text/javascript'>
+  var login = 'Хитрая_Лиса';
+  var state = 0;
+  var pupilStr = "";
+  function LoadPupil() {
+    var img = document.getElementById('plus_img');
+    if (state == 0) {
+      if (pupilStr == "") {
+        document.getElementById('load_str').innerHTML = 'Загрузка...';
+        DoRequest("pl_info.php?act=1&login=" + encUri(login), update);
+      }
+      else {
+        document.getElementById('pupil_str').innerHTML = pupilStr;
+      }
+      img.src = '/images/miscellaneous/e_minus.gif';
+      img.title = "Скрыть";
+      state = 1;
+    }
+    else {
+      document.getElementById('pupil_str').innerHTML = "<small><i><span id='load_str'>Нажмите '+' для показа учеников...</span></i></small>";
+      img.src = '/images/miscellaneous/e_plus.gif';
+      img.title = "Показать";
+      state = 0;
+    }
+  }
+  function update(t) {
+    var s = "<table width=100%>" + eval(t) + "</table>";
+    document.getElementById('pupil_str').innerHTML = s;
+    pupilStr = s;
+  }
+  function SrchPl() {
+    oI(document.getElementById('spln').value);
+  }
+</script>
+
+<table align=center cellpadding=0 cellspacing=0>
+  <tr>
+    <td><img src='/images/miscellaneous/title_left.gif' width=42 height=33></td>
+    <td align=center valign=top>
+      <table align=center cellpadding=0 cellspacing=0>
+        <tr>
+          <td width=100% height=20 background='/images/miscellaneous/title_center.gif' valign=top><B>&nbsp;
+            <SCRIPT>document.write(wcl("Хитрая_Лиса", 932740, 13, 4, "FF6F01", 109, "Глава Сумрачных Эльфов - Глава)", 6, "Элита)[89086]", 200, "Ученик)[403]", 0, "", 0, "F"));</SCRIPT>
+            Хитрая_Лиса [L13]
+            <image width=15 height=15 src='../images/miscellaneous/levname_53.gif' style='cursor: hand'
+                   onclick='javascript: window.open("battle_info_arena.php?login=Хитрая_Лиса", "_blank", "width=600,height=600,toolbar=no,status=no,scrollbars=yes,menubar=no,resizable=no");'
+                   title='Рейтинг боев на Арене
+Герой
+Побед:  961 / Поражений: 881'>&nbsp;
+              <image width=15 height=15 src='../images/miscellaneous/levnam_45.gif' style='cursor: hand'
+                     onclick='javascript: window.open("battle_info.php?login=Хитрая_Лиса", "_blank", "width=600,height=600,toolbar=no,status=no,scrollbars=yes,menubar=no,resizable=no");'
+                     title='Рейтинг реальных боев с NPC
+Сильнейший  Олимпиец
+Побед:  16541 / Поражений: 88'>:&nbsp;<font title='Законопослушный (21)' color=#00FF00><b>L</b></font><font
+                title='Злой (-11)' color=#FF0000><b>E</b></font>&nbsp;
+          </B></td>
+        </tr>
+      </table>
+    </td>
+    <td><img src='/images/miscellaneous/title_right.gif' width=42 height=33></td>
+  </tr>
+</table>
+<TABLE width='710' height='100%' valign='center' align='center' cellspacing='0' cellpadding='0'>
+  <TR>
+    <TD width=234 valign='top'>
+
+      <SCRIPT>
+        var s = GetBlockTop('234');
+        s += GetBlockTitle('Характеристики');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=100%>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell_bg' width=100% align=left>
+            <script>
+              function ShowPlayerImage(imgName) {
+                width = 200;
+                height = 400;
+                if (imgName.indexOf("unique") >= 0) {
+                  width = 280;
+                  height = 600;
+                }
+                var imgWindow = window.open("show_big_player.php?i=" + imgName, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,status=no,scrollbars=no,menubar=no,resizable=no");
+              }
+            </script>
+            <TABLE cellspacing=0 cellpadding=0>
+              <TR>
+                <TD align=center>
+                  <TABLE cellspacing=1 cellpadding=0>
+                    <TR>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Шапочка&nbsp;для&nbsp;Обрядов
+Уровень: 3
+Скорость: +1' src="../images/items/quest_831.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=2833','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                      <TD height=225 width=50 ROWSPAN=5 valign='top' align='center'><img WIDTH=100 HEIGHT=225
+                                                                                         src="/images/players/unique_id_932740.gif"
+                                                                                         title="Хитрая_Лиса :: Уровень обмундирования: 6.35"
+                                                                                         style='cursor: pointer;'
+                                                                                         onClick=ShowPlayerImage('unique_id_932740.gif')><br>
+                      </TD>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Амулет&nbsp;Астрала
+Уровень: 8
+Магия Астрала: +2
+Нужно: 8 Ум' src="../images/items/amulet_astral_08.png" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=108451','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50
+                                                  title='Свадебное&nbsp;Платье&nbsp;&quot;Звезда&quot;
+Артефакт
+Скорость: +3' src="../images/items/wed_gown_01.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=39','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Книга&nbsp;<Суть&nbsp;Вселенной>
+Уровень: 10
+Магия Астрала: +5
+Нужно: 10 Ум' src="../images/items/book06.png" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=310451','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD height=25 width=50><img WIDTH=25 HEIGHT=25 title='Мифрильный&nbsp;Браслет&nbsp;Астрала
+Уровень: 8
+Магия Астрала: +2
+Нужно: 8 Ум' src="../images/items/bracer_astral_08.png" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=1008451','_blank','scrollbars=yes,width=580,height=495,resizable=yes')"><img
+                        WIDTH=25 HEIGHT=25 title='Мифрильный&nbsp;Браслет&nbsp;Астрала
+Уровень: 8
+Магия Астрала: +2
+Нужно: 8 Ум' src="../images/items/bracer_astral_08.png" style='cursor: pointer; cursor: hand;'
+                        onClick="JavaScript:window.open('item_desc.php?id=1008451','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                      <TD height=25 width=50><img WIDTH=50 HEIGHT=25 title='Пояс&nbsp;Странника
+Уровень: 6
+Скорость: +2' src="../images/items/belt_speed_06.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=906340','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD>
+                        <TABLE cellspacing=0 cellpadding=0>
+                          <TR>
+                            <TD height=25 width=25><img WIDTH=25 HEIGHT=25 title='Кольцо&nbsp;Барыги
+Уровень: 6
+Скорость: +4' src="../images/items/ring_speed_03.gif" style='cursor: pointer; cursor: hand;'
+                                                        onClick="JavaScript:window.open('item_desc.php?id=506340','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                            </TD>
+                            <TD height=25 width=25><img WIDTH=25 HEIGHT=25 title='Кольцо&nbsp;Барыги
+Уровень: 6
+Скорость: +4' src="../images/items/ring_speed_03.gif" style='cursor: pointer; cursor: hand;'
+                                                        onClick="JavaScript:window.open('item_desc.php?id=506340','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                            </TD>
+                          </TR>
+                          <TR>
+                            <TD height=25 width=25><img WIDTH=25 HEIGHT=25 title='Кольцо&nbsp;Барыги
+Уровень: 6
+Скорость: +4' src="../images/items/ring_speed_03.gif" style='cursor: pointer; cursor: hand;'
+                                                        onClick="JavaScript:window.open('item_desc.php?id=506340','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                            </TD>
+                            <TD height=25 width=25><img WIDTH=25 HEIGHT=25 title='Кольцо&nbsp;Барыги
+Уровень: 6
+Скорость: +4' src="../images/items/ring_speed_03.gif" style='cursor: pointer; cursor: hand;'
+                                                        onClick="JavaScript:window.open('item_desc.php?id=506340','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                            </TD>
+                          </TR>
+                        </TABLE>
+                      </TD>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Веер&nbsp;Ветра
+Уровень: 6
+Скорость: +4' src="../images/items/swamp_fan1.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=2202','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Ветер&nbsp;Пустыни
+Уровень: 4
+Скорость: +1' src="../images/items/quest_1052.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=3053','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                      <TD height=50 width=50><img WIDTH=50 HEIGHT=50 title='Волкодавы
+Уровень: 9
+Скорость: +3' src="../images/items/swamp_wolfhound.gif" style='cursor: pointer; cursor: hand;'
+                                                  onClick="JavaScript:window.open('item_desc.php?id=2198','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                      </TD>
+                    </TR>
+                  </TABLE>
+                </TD>
+              </TR>
+            </TABLE>
+            <span id='scroll0'><img src='/images/items/scroll_used.gif' width='25' height='25' border='0'
+                                    title='Неизвестный Свиток'></span><span id='scroll1'><img
+            src='/images/items/scroll_used.gif' width='25' height='25' border='0'
+            title='Неизвестный Свиток'></span><span id='scroll2'><img src='/images/items/scroll_used.gif' width='25'
+                                                                      height='25' border='0' title='Неизвестный Свиток'></span><span
+            id='scroll3'><img src='/images/items/scroll_used.gif' width='25' height='25' border='0'
+                              title='Неизвестный Свиток'></span><span id='scroll4'><img
+            src='/images/items/scroll_used.gif' width='25' height='25' border='0'
+            title='Неизвестный Свиток'></span><span id='scroll5'><img src='/images/items/scroll_used.gif' width='25'
+                                                                      height='25' border='0' title='Неизвестный Свиток'></span><span
+            id='scroll6'><img src='/images/items/scroll_used.gif' width='25' height='25' border='0'
+                              title='Неизвестный Свиток'></span><span id='scroll7'><img
+            src='/images/items/scroll_used.gif' width='25' height='25' border='0' title='Неизвестный Свиток'></span>
+            <TABLE>
+              <TR>
+                <TD>Зелья:</TD>
+                <TD><img height=25 width=25 src='../images/items/swamp_maz7.gif' title='Мазь&nbsp;от&nbsp;Болотных&nbsp;Ловушек
+Уровень: 6
+Осталось: 2 ч. 22 мин.' style='cursor: pointer; cursor: hand;'
+                         onClick="JavaScript:window.open('item_desc.php?id=2177','_blank','scrollbars=yes,width=580,height=495,resizable=yes')">
+                </TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+      </TABLE>
+      <TABLE width=100%>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell' width=100% align=left>
+            <TABLE>
+              <TD>
+                <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/hp.gif' title='Здоровье'>
+              </TD>
+              <TD width='100%'>
+                <div
+                  style='position:relative;left:0px;top:0px;width:100%;height:10px;background-image:url(../images/pic/hp_gray.gif)'>
+                  <div id='hpLine'
+                       style='position:absolute;overflow:hidden;left:0px;top:0px;height:10px;width:100%;background-image:url(../images/pic/hp_green.gif)'></div>
+                </div>
+              </TD>
+              <TD id=hp1><font color='#F9FBA8'>[</font>431/431<font color='#F9FBA8'>]</font></TD>
+            </TABLE>
+            <table align=center cellpadding=0 cellspacing=0 width=95% height=12>
+              <tr>
+                <td><img src='/images/buttons/point.gif' width='6' height='12'></td>
+                <td background='/images/buttons/line.gif' width=100%></td>
+                <td><img src='/images/buttons/point.gif' width='6' height='12'></td>
+              </tr>
+            </table>
+            <table>
+              <td WIDTH='70'>
+                <table>
+                  <tr>
+                    <td height=20 width=20>
+                      <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/strength.gif' title='Сила'>
+                    </td>
+                    <td>13</td>
+                  </tr>
+                  <tr>
+                    <td height=20 width=20>
+                      <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/intelligence.gif' title='Ум'>
+                    </td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <td height=20 width=20>
+                      <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/luck.gif' title='Удача'>
+                    </td>
+                    <td>4</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <td WIDTH='70'>
+                    <table>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/mastery_d.gif'
+                                 title='Власть над Драконами'>
+                        </td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/mastery_k.gif'
+                                 title='Власть над Рыцарями'>
+                        </td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/mastery_l.gif'
+                                 title='Власть над Дамами'>
+                        </td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td>
+                    <table>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/magic_c.gif' title='Магия Хаоса'>
+                        </td>
+                        <td>11</td>
+                      </tr>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/magic_h.gif' title='Магия Света'>
+                        </td>
+                        <td>17</td>
+                      </tr>
+                      <tr>
+                        <td height=20 width=20>
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/magic_s.gif' title='Колдовство'>
+                        </td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                  </td>
+                </table>
+              </td>
+            </table>
+            <table align=center cellpadding=0 cellspacing=0 width=95% height=12>
+              <tr>
+                <td><img src='/images/buttons/point.gif' width='6' height='12'></td>
+                <td background='/images/buttons/line.gif' width=100%></td>
+                <td><img src='/images/buttons/point.gif' width='6' height='12'></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td width=70>
+                  <table>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_d.gif' title='Атака Драконов'>
+                          &nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_d.gif'
+                                 title='Защита от Драконов'>
+                      </td>
+                      <td nowrap>1/2</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_k.gif' title='Атака Рыцарей'>
+                          &nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_k.gif'
+                                 title='Защита от Рыцарей'>
+                      </td>
+                      <td nowrap>1/1</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_l.gif' title='Атака Дам'>&nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_l.gif' title='Защита от Дам'>
+                      </td>
+                      <td nowrap>0/1</td>
+                    </tr>
+                    <tr>
+                      <td colspan=2>
+                        <image WIDTH=80 HEIGHT=20 src='../images/miscellaneous/icon_empty.png'>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td width=70>
+                  <table>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_c.gif' title='Атака Хаоса'>&nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_c.gif' title='Защита от Хаоса'>
+                      </td>
+                      <td nowrap>11/11</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_h.gif' title='Атака Света'>&nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_h.gif' title='Защита от Света'>
+                      </td>
+                      <td nowrap>17/21</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_s.gif' title='Атака Колдовства'>
+                          &nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_s.gif'
+                                 title='Защита от Колдовства'>
+                      </td>
+                      <td nowrap>0/0</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/attack_a.gif' title='Атака Астрала'>
+                          &nbsp;
+                          <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/defence_a.gif'
+                                 title='Защита от Астрала'>
+                      </td>
+                      <td nowrap>11/11</td>
+                    </tr>
+                  </table>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan=3>
+                  <table>
+                    <tr>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/speed.gif' title='Скорость'>
+                      </td>
+                      <td nowrap>30</td>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/conc.gif' title='Концентрация'>
+                      </td>
+                      <td nowrap>15</td>
+                      <td>
+                        <image WIDTH=20 HEIGHT=20 src='../images/miscellaneous/pp.gif' title='Защита от Яда'>
+                      </td>
+                      <td nowrap>1</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('236');
+        s += GetBlockTitle('Поиск игрока');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <form method='get' target='_blank' onsubmit='SrchPl(); return false;'><INPUT type='text' class='text' name='login'
+                                                                                   id='spln' size='20' maxlength='20'
+                                                                                   value='' title='Введите имя игрока'>&nbsp;<input
+        class='button_59_20' onmouseover='this.style.backgroundImage="url(/images/buttons/59_20_s.gif)"'
+        onmouseout='this.style.backgroundImage="url(/images/buttons/59_20.gif)"' type='button' onclick='SrchPl();'
+        value='Найти'></form>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+    </TD>
+    <TD valign='top' align='left'>
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Анкетные Данные');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=446>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell' width=100 align=left><b>Имя:</b></TD>
+          <TD class='cell' width=346>Огненный Хвост</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=100 align=left><b>Город:</b></TD>
+          <TD class='cell2' width=346>Приозерье</TD>
+        </TR>
+        <TR>
+          <TD class='cell' width=100 align=left><b>ДР:</b></TD>
+          <TD class='cell' width=346>1992-10-17</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=100 align=left><b>ICQ:</b></TD>
+          <TD class='cell2' width=346>610326659&nbsp;<IMG src='http://status.icq.com/online.gif?icq=610326659&img=5'
+                                                          width='15' height='15' border='0'/></TD>
+        </TR>
+        <TR>
+          <TD class='cell width=100' align=left><b>Девиз:</b></TD>
+          <TD class='cell' width=346>[04:39] Разрубив опасную рыбку надвое, Вы, прыгая по доскам, отправились на поиски
+            следующей жертвы!
+          </TD>
+        </TR>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Информация');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=446>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Состоит в браке:</b></TD>
+          <TD class='cell2' width=346>
+            <SCRIPT>document.write(w("Elrion", 28326, 12, 2, "292929", 109, "Светлый Эльф - VII Впитавший свет)", 12, "Элита)[67917]", 200, "Мастер)[2809]", 0, "", 0, "M"));</SCRIPT>
+          </TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Статус:</b></TD>
+          <TD class='cell2' width=346><img src="/images/buttons/check_yes.gif" width=12 height=12>&nbsp;<font
+            color=00ff00>ONLINE</font>&nbsp;</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Дата рождения:</b></TD>
+          <TD class='cell2' width=346>2010-12-25 22:49:45</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Место:</b></TD>
+          <TD class='cell2' width=346>Столица</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Локация:</b></TD>
+          <TD class='cell2' width=346>Арена Марафонов</TD>
+        </TR>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Награды');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <center>
+        <TABLE cellpading=1 cellspacing=1>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('mec4.gif', 25, 25, 'Эффект Олимпийца:\nЗа рейтинг Сильнейшего в битвах в лабиринтах.\n+10 к макс. жизни', 95);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('q300_medal.png', 25, 25, 'Благодарность Опытного Кролика:\nПамятная Медаль за открытие и исследование Иной Реальности - 2015!\n+1 к макс. жизни', 232);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('medal_tower.gif', 25, 25, 'Печать Злого Колдуна:\nЗа изничтожение адептов света!\n+1 к Защите от Света, -1 к макс. жизни', 745);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('medal_kgb.png', 25, 25, 'Медаль КГБ:\nЗа отчаянные подвиги в возвращении эмоций в Ледрак!\n+1 к макс. жизни', 749);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('fmush2.gif', 25, 25, 'Орден Грибника III степени:\nОт Шахтеров за вагонетку сушеных грибов для окуривания рудников от злых духов!\n(Всего собрано грибов: 10819)\n+2 к макс. жизни', 5042);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('fhealth1.gif', 25, 25, 'Медаль Здоровья:\nЗа юбилейный найденный мухомор самодельная награда из мха, сучка и этого самого мухомора!\n(Всего собрано мухоморов: 2328)\n+1 к макс. жизни', 5045);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('gelite1.gif', 25, 25, 'Медаль Элиты:\nЗа впечатляющие достижения в выбранной гильдии!\n+3 к макс. жизни', 5047);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('tsign6ghj.gif', 25, 25, 'Золотой Турнирный Знак:\nЗа блестящие выступления в турнирах Лиги Героев (105 и более  баллов)!\n+6 к макс. жизни', 5086);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('tfan2abi.gif', 25, 25, 'Знак Любителя Турниров:\nЗа активное участие в 30 и более турнирах Лиги Героев!\n+2 к макс. жизни', 5093);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('buntsign6ghj.gif', 25, 25, 'Золотой Наградной Знак:\nЗа подавление бунтов на арене марафонов.\n+6 к макс. жизни', 5106);</SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('bug3.gif', 25, 25, 'Знак Жуколова:\nЗа невероятное упорство в ловле Жуков!\n+1 к макс. жизни', 5121);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('labr12_pal3.gif', 25, 25, 'Орден Лабиринта Паладинов I-й степени:\n\n+3 к Защите от Света', 5133);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('labr12_pd1.gif', 25, 25, 'Орден Лабиринта Драконов III-й степени:\n\n+1 к Защите от Драконов', 5143);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('medal_kazr3.gif', 25, 25, 'Медаль Казематов I-й степени:\n\n+3 к макс. жизни', 5148);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('portsign3as.png', 25, 25, 'Стальной Портовый Знак:\nЗа самоотверженную оборону Порта от всячески напастей.\n+3 к макс. жизни', 5153);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('drlg10_medal.gif', 25, 25, 'Орден Лиги Героев 2014:\nЗа непосильный труд в развитии Лиги Героев и активном участии в ее жизни!\n+1 к Защите от Яда', 5205);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_experiment4.gif', 25, 25, 'Орден Естествоиспытателей I степени:\nЗа потребление алхимической продукции в объёмах, поражающих воображение\n+5 к макс. жизни', 5303);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_bmage3.gif', 25, 25, 'Орден Боевых Магов II степени:\nЗа успехи в применении боевых заклинаний от Долины Магов\n+3 к макс. жизни', 5307);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_archer4.gif', 25, 25, 'Орден Стрелков I степени:\nЗа невероятную меткость в применении кальтропов от восхищенных мобов Ледрака\n+5 к макс. жизни', 5313);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_mumu3.gif', 25, 25, 'Подкова Мумустанга II степени:\nЗа всё хорошее от благодарных переписчиков населения Ледрака\n+3 к макс. жизни', 5317);</SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_adventurer3.gif', 25, 25, 'Орден Приключенцев II степени:\nОт спасенных принцесс, выживших драконов и посрамленных рыцарей-конкурентов\n+3 к макс. жизни', 5322);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_sect3.gif', 25, 25, 'Орден: Гроза Сектантов-Ведунов:\nСвобода веры тоже может быть верой…\n+1 к Атаке и Защите Рыцарей', 5327);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_guard3.gif', 25, 25, 'Орден: Повелительница Змей:\nИногда победитель дракона сам становится драконом… \n+1 к Атаке и Защите Драконов', 5335);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_witcher2.gif', 25, 25, 'Орден: Борец с Мракобесием II степени:\nЗа самоотверженную борьбу с Ведьмигами\n+1 к Защите Дам', 5338);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_steady2.gif', 25, 25, 'Орден: Борец с Вредными Привычками II степени:\nЗа самоотверженную борьбу с Глюнами\n+3 к макс. жизни', 5341);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_trainer2.gif', 25, 25, 'Орден Наставника III степени:\nОт благодарных воспитанников за ласку, доброту и бесконечное терпение\n+2 к макс. жизни', 5357);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('q191_medal2.gif', 25, 25, 'Медаль Жемчужного Побережья 2013:\nВ память о приключениях на Жемчужном Побережье!\n+1 к макс. жизни', 5372);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_daily_arena_1.gif', 25, 25, 'Орден Дуэлянта III степени:\nЗа мастерские победы в дуэлях и групповых сражениях\n+1 к макс. жизни', 5420);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_daily_fleya_1.png', 25, 25, 'Орден Помощника III степени:\nЗа упорство и труд в выполнении поручений от прекрасной Флеи\n+1 к макс. жизни', 5425);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_daily_labs_1.png', 25, 25, 'Орден Мобилизации III степени:\nЗа вклад в защиту мирных жителей Ледрака от вездесущих мобов\n+1 к макс. жизни', 5430);</SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('kr_daily_guilds_1.png', 25, 25, 'Орден Союза гильдий III степени:\nЗа неоценимую помощь в выполнении поручений на гильдийном поприще\n+1 к макс. жизни', 5435);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('crvrait5.gif', 25, 25, 'Серебряный Орден Караванщика:\nОт Администрации Ледрака - за успешную охрану караванов!\n+5 к макс. жизни', 8824);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('crv_guard2.gif', 25, 25, 'Орден Охранника III степени:\nОт Заморских Купцов - за успешное отражение атак на караваны!\n+2 к макс. жизни', 8831);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('crv_hunt3.gif', 25, 25, 'Орден Охотника за головами II степени:\nОт Отдела розыска ледракской Стражи - за поимку отпетых негодяев при охране караванов!\n+3 к макс. жизни', 8837);</SCRIPT>
+            </TD>
+          </TR>
+        </TABLE>
+      </center>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Чемпионаты');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <center>
+        <TABLE cellpading=1 cellspacing=1>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('championship_medal1.gif', 25, 25, 'Золотая медаль чемпионата:\nЗа победу на чемпионате Ледрака!\n+3 к макс.жизни', 5360);</SCRIPT>
+            </TD>
+            <TD>
+              <SCRIPT
+                language="JAVASCRIPT">ShowRank('championship_medal2.gif', 25, 25, 'Серебрянная медаль чемпионата:\nЗа второе место на чемпионате Ледрака!\n+2 к макс.жизни', 5361);</SCRIPT>
+            </TD>
+          </TR>
+        </TABLE>
+      </center>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Турниры');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=446>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Участвовала:</b></TD>
+          <TD class='cell2' width=346>103&nbsp;(<font alt='Активно участвовал' title='Активно участвовал'
+                                                      color='#F9FBA8'>83</font>)&nbsp;<A target='_blank'
+                                                                                         HREF='show_player_tournaments.php?login=Хитрая_Лиса'>>>></A>
+          </TD>
+        </TR>
+        <TR>
+          <TD class='cell' width=200 align=left><b>Победила:</b></TD>
+          <TD class='cell' width=346>13</TD>
+        </TR>
+        <TR>
+          <TD class='cell' width=200 align=left><b>Баллов:</b></TD>
+          <TD class='cell' width=346>136</TD>
+        </TR>
+        <TR>
+          <TD class='cell2' width=200 align=left><b>Медали:</b></TD>
+          <TD class='cell2' width=346><IMG src="../images/medals/d1.gif" title="Медаль Колдовства:
+За победу в турнире &quot;Мёртвые Чувства&quot;
++3 к макс. жизни">&nbsp;</TD>
+        </TR>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Клановые Бонусы');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=446>
+        <SCRIPT>
+          ShowClanBonus('luck.gif', 'Удача', '4');
+          ShowClanBonus('hp.gif', 'Макс. Жизнь', '1');</SCRIPT>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Подарки');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <center>
+        <TABLE cellpading=1 cellspacing=1>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('unique_id_100015.gif', 50, 50, 0, 'Белый ветер от Безумный_шляпник\nЭто меч моей души... Вещь которую можно доверить только особенному для тебя человеку...Потому как его утрата - означает потерю души... Ты не просто особенная, ты прекраснейшее чудо из всех, что существуют на Земле... Я тебя люблю, родная...\nДля тебя этот меч будет теплым, лишь для тебя, моя малышка...', 533986, 100015); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('unique_id_100014.gif', 50, 50, 0, 'Хранитель тепла души от _Цербер_\nСолнышко, это твой личный хранитель.Он будет беречь тебя, когда меня не будет рядом. Будет хранить нашу любовь, мою половинку и мой смысл жизни. Ее зовут Софка. Маленький пушистый любимчик - теперь он твой. Я люблю тебя, мое солнышко.', 514522, 100014); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('spagi.gif', 50, 50, 0, 'Шпаги Дуэлиста от Filid\nПоздравляю с Днем Рождения)\nЧего хочется пожелать? Ну главное это здоровья и счастья, любви и удачи) А еще, не менее важное) Хочу пожелать тебе, чтобы в твоей жизни было побольше чудес)\nПомни,  к чуду надоть стремиться с верой в то что оно произойдет и тогда все непременно получится! \nИ для этого тебе надоть вычеркивать оборот &quot;не могу&quot; из лексикона) Для людей нет НИЧЕГО невозможного!\nУспехов тебе во всем)', 506314, 11006); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('pero.gif', 50, 50, 0, 'Подарочный Набор Мудреца от Led-Zeppelin\nХитрый, маленький Лисенок\nТолько вылез из пеленок,\nНатворил немало дел:\nУ енота рыбку съел,\n\nБарсуку набил он шишку,\nМишке разорвал штанишки,\nДернул зайчика за хвост\nИ волчонку щелкнул нос.\n\nС хомяком затеял драку,\nИспугался лишь собаку.\nНевоспитанный ребенок.\nЭтот маленький Лисёнок.	\n***\n\n\nТак вот как прошло твоё детство :D', 686829, 11408); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('ny2013_tatsu2.gif', 50, 50, 0, 'Мишка&nbsp;Клаус от Малыш (3 д.)\nмогу колду продать пока тут', 1329332, 427); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('ny2013_tatsu3.gif', 50, 50, 0, 'Мумустанг&nbsp;Подъелочный от Малыш (3 д.)\nдо вечера наврядли...', 1329333, 428); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('p002.gif', 50, 50, 0, 'Торт <Нежность> от sp_raw_clan (11 д.)\nПросто сладость)', 1330517, 2019); </SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_bananas.gif', 50, 50, 0, 'Связка&nbsp;Бананов от Dante (18 д.)\nи тебе)', 1331269, 379); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_butterfly1.gif', 50, 50, 0, 'Солнечная&nbsp;Бабочка от Dante (18 д.)\nЛучшая помошница в обитиле', 1331271, 381); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('ladies_pres_1.gif', 50, 50, 0, 'Букет&nbsp;Гиацинтов от Саманта1 (18 д.)\nБлагодарю! :)', 1331281, 270); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_hat_m.gif', 50, 50, 0, 'Соломенная&nbsp;Шляпа от brasher (21 д.)\nпривет. все осталось. бегу в стольню', 1331638, 357); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_fish.gif', 50, 50, 0, 'Надувной&nbsp;Круг&nbsp;Рыбка от Атмосфера (21 д.)\nне-а, уже купили', 1331639, 388); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q194_orange.png', 50, 50, 0, 'Сладкая&nbsp;Мандаринка от Jordan (21 д.)\nСпасибо большое за помощь на турнире)', 1331684, 405); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('up_buk_odu.gif', 50, 50, 0, 'Букет Одуванов от whiskas (21 д.)\nспасибо за сезон :*', 1331703, 131); </SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_hat_f.gif', 50, 50, 0, 'Соломенная&nbsp;Шляпка от Сэр_Лентяй (22 д.)\nЛето!)', 1331763, 356); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_chivirichki.gif', 50, 50, 0, 'Пляжные&nbsp;Чивирички от Сэр_Лентяй (22 д.)\nЛето!)', 1331764, 360); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_flowers1.gif', 50, 50, 0, 'Букет&nbsp;&quot;Южный&nbsp;Рассвет&quot; от Сэр_Лентяй (22 д.)\nЛето!)', 1331765, 364); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q191_pres_icecream.gif', 50, 50, 0, 'Мороженое от Сэр_Лентяй (22 д.)\nПрохлада)', 1331766, 370); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('drlg2014_pres_21.gif', 50, 50, 0, 'Букет&nbsp; Земляники от Хеддин (23 д.)\nбу', 1331917, 451); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('drlg2014_pres_23.gif', 50, 50, 0, 'Звезда&nbsp;Болот от Хеддин (25 д.)\nбу', 1332062, 453); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('drlg2014_pres_24.gif', 50, 50, 0, 'Кованая&nbsp;Роза от САТУРН (26 д.)\nя только приценивался.. \nпока не знаю, хочу ли я их продавать..', 1332143, 454); </SCRIPT>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('drlg2014_pres_24.gif', 50, 50, 0, 'Кованая&nbsp;Роза от САТУРН (26 д.)\nизвини.. отходил.. работа..\nно раз все разрешилось.. то тогда не буду больше отвлекать..\nПриятной игры!', 1332146, 454); </SCRIPT>
+            </TD>
+
+            <TD>
+              <SCRIPT
+                language="javascript"> ShowPresent('q194_venok2.png', 50, 50, 0, 'Венок&nbsp;из&nbsp;Шишек от Jordan (29 д.)\nспасибо за эффы)', 1332419, 402); </SCRIPT>
+            </TD>
+          </TR>
+        </table>
+      </center>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+      <table cellpadding=0 cellspacing=0 border=0 width=470>
+        <tr>
+          <td align=left valign=top>
+
+            <SCRIPT>
+              var s = GetBlockTop('234');
+              s += GetBlockTitle('Друзья');
+              s += GetBlockMiddle();
+              document.write(s);
+            </SCRIPT>
+
+            <table width=100%>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("karp", 607471, 11, 2, "9CFF00", 109, "Тёмный Эльф - Зам. Главы)", 7, "Мастер)[6447]", 15, "Мастер)[5258]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Де_Фармелло", 817595, 12, 4, "FFFFFF", 136, "Астральный - Stormguard)", 7, "Грандмастер)[28261]", 15, "Грандмастер)[30285]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("3айчик", 166903, 10, 2, "FFFF00", 109, "Эльфийка - Ищущая Путь)", 7, "Мастер)[2534]", 18, "Грандмастер)[23736]", 0, "", 0, "F")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Maldini33", 735553, 14, 2, "EF0000", 10, "Сказочный дракон - Молчун)", 6, "Новичок)[3]", 7, "Мастер)[5196]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Инпу", 674658, 6, 4, "EF0000", 3, "Наёмник)", 7, "Грандмастер)[35293]", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Filini", 105032, 14, 2, "792885", 65, "Верховный Хранитель - Глава)", 6, "Гранд Элита)[695117]", 7, "Элита)[63073]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Divine", 773814, 9, 4, "792885", 3, "Пилигрим)", 18, "Грандмастер)[20323]", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Кровавый_ворон", 135795, 13, 1, "292929", 10, "Следопыт - Светлый эльф)", 6, "Элита)[69086]", 7, "Мастер)[10363]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Призрак", 931038, 11, 4, "FFFFFF", 21, "-1-)", 6, "Грандмастер)[35111]", 7, "Адепт)[582]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Velxeor", 211635, 11, 4, "292929", 7, "Грандмастер)[48358]", 15, "Мастер)[5463]", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("JoKeR7", 504983, 9, 4, "9CFF00", 10, "Повелитель стихий - Лесной эльф)", 7, "Грандмастер)[19197]", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("1isenok", 96599, 9, 1, "FF6F01", 6, "Ученик)[127]", 0, "", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Bakf", 144920, 12, 4, "EF0000", 7, "Грандмастер)[46472]", 11, "Элита)[133790]", 12, "Элита)[73695]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("ДубаДам", 368972, 14, 4, "9CFF00", 109, "Глава Тёмных Эльфов - Зам. Главы)", 6, "Элита)[127226]", 7, "Грандмастер)[24287]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Сигареты_и_кофе", 759305, 11, 2, "9CFF00", 109, "Светлый Эльф - VII Впитавший свет)", 6, "Мастер)[2664]", 7, "Адепт)[857]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("-FoX-", 432205, 12, 4, "EF0000", 10, "Вожак Стаи - Зам. Главы)", 7, "Грандмастер)[44490]", 28, "Элита)[106641]", 0, "", 0, "F")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Gippo", 114535, 10, 2, "9CFF00", 6, "Мастер)[6984]", 7, "Мастер)[9813]", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Torald", 979318, 6, 2, "6A2323", 7, "Ученик)[168]", 0, "", 0, "", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("Kyron", 643929, 10, 4, "292929", 109, "Сумрачный Эльф - IV Последователь сумерек)", 11, "Элита)[150638]", 200, "Ученик)[318]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+              <tr>
+                <td class='cell'>
+                  <SCRIPT> document.write(w("ZCORPION", 215928, 11, 4, "282D85", 148, "Князь - Глава)", 11, "Гранд Элита)[519157]", 15, "Грандмастер)[28444]", 0, "", 0, "M")); </SCRIPT>
+                  <br></td>
+              </tr>
+            </table>
+
+            <SCRIPT> ShowBlockBottom(); </SCRIPT>
+          </td>
+          <td align=right valign=top>
+
+            <SCRIPT>
+              var s = GetBlockTop('234');
+              s += GetBlockTitle('Враги');
+              s += GetBlockMiddle();
+              document.write(s);
+            </SCRIPT>
+
+            <center>
+              <small><i>Список врагов пуст...</i></small>
+            </center>
+
+            <SCRIPT> ShowBlockBottom(); </SCRIPT>
+          </td>
+        </tr>
+        </tr></table>
+
+      <SCRIPT>
+        var s = GetBlockTop('470');
+        s += GetBlockTitle('Личная Информация');
+        s += GetBlockMiddle();
+        document.write(s);
+      </SCRIPT>
+
+      <TABLE width=446>
+        <TR>
+          <TD>
+        <TR>
+          <TD class='cell' width=100% align=left>http://savepic.ru/9763700.jpg
+            <BR>
+            <BR>________________________________________________________________
+            <BR><b>*Бойцовский Клуб*</b>
+            <BR>
+            <BR><font color="#F9FBA8"><b>В данный момент сезон закрыт</b></font>
+            <BR>
+            <BR><b>Календарь:</b>
+            <BR><font color="#F9FBA8"><i>http://elf.ucoz.ru/kalendar_bk.png</i></font>
+            <BR>
+            <BR><b>Календарь на Цитадели:</b>
+            <BR><font color="#F9FBA8"><i>http://www.citadel-liga.info/liga/contest/fight</i></font>
+            <BR>
+            <BR><b>Общий Рейтинг:</b>
+            <BR><font color="#F9FBA8"><i>http://elf.ucoz.ru/obshhij_rejting.html</i></font>
+            <BR>
+            <BR><b>Турнирный Рейтинг:</b>
+            <BR><font color="#F9FBA8"><i>http://elf.ucoz.ru/turnirnyj_rejting.html</i></font>
+            <BR>
+            <BR><b>Вся информация про игры и Клуб:</b>
+            <BR><font color="#F9FBA8"><i>http://elf.ucoz.ru/forum/53</i></font>
+            <BR>________________________________________________________________
+            <BR>
+            <BR> <font color="#F9FBA8">***</font><b>История</b><font color="#F9FBA8">***</font>
+            <BR><b>2010</b>
+            <BR><font color="#F9FBA8"><b>25 декабря</b></font> Появилось такое хвостатое чудо=)
+            <BR><font color="#F9FBA8"><b>26 декабря</b></font> Ап на <font color="#F9FBA8"><b>2</b></font>й
+            <BR><font color="#F9FBA8"><b>29 декабря</b></font> Ап на <font color="#F9FBA8"><b>3</b></font>й
+            <BR><b>2011</b>
+            <BR><font color="#F9FBA8"><b>3 января</b></font> Рыжая наёмница в Союзе Эльфов=)) <img
+              src="../images/forum_smiles/art.gif">
+            <BR><font color="#F9FBA8"><b>9 января</b></font> Еще одна пара влюбленных сердец соединилась! Только что <b>Воскрешенный</b>
+            и <b>Хитрая_Лиса</b> вступили в брак!
+            <BR><font color="#F9FBA8"><b>15 января</b></font> Мне в голову пришла одна безумная идея...))) <img
+              src="../images/forum_smiles/rolleyes.gif">
+            <BR><font color="#F9FBA8"><b>16 января</b></font> Ап на <font color="#F9FBA8"><b>4</b></font>й
+            <BR><font color="#F9FBA8"><b>20 января</b></font> Ап на <font color="#F9FBA8"><b>5</b></font>й <b>Хитрая_Лиса</b>
+            [L5/1500]
+            <BR><font color="#F9FBA8"><b>26 января</b></font> Первый турнир, 2е место с <b>Воскрешенным</b>
+            <BR><font color="#F9FBA8"><b>28 января</b></font> Серебряный знак Марафонца среди 5х=))
+            <BR><font color="#F9FBA8"><b>8 февраля</b></font> Эльфийка <img src="../images/forum_smiles/ivan.gif">
+            <BR><font color="#F9FBA8"><b>9 марта</b></font> <u>1е место</u> лисичка и <b>Воскрешенный</b> на 5м!
+            <BR><font color="#F9FBA8"><b>17 апреля</b></font> Грандмастер в мудрецах
+            <BR><font color="#F9FBA8"><b>30 апреля</b></font> Третий поход в болото - выползок=)
+            <BR><font color="#F9FBA8"><b>24 мая</b></font> Вторая шамаханка <img
+              src="../images/forum_smiles/tease2.gif">
+            <BR><font color="#F9FBA8"><b>26 мая</b></font> Ап на <font color="#F9FBA8"><b>6</b></font>й
+            <BR><font color="#F9FBA8"><b>5 июня</b></font> Ап на <b><font color="#F9FBA8">7</font></b>й
+            <BR><font color="#F9FBA8"><b>21 июня</b></font> Ап на <b><font color="#F9FBA8">8</font></b>й Хитрая_Лиса
+            [L8/13000]
+            <BR><font color="#F9FBA8"><b>5 августа</b></font> Ап на <b><font color="#F9FBA8">9</font></b>тку
+            <BR><font color="#F9FBA8"><b>10 сентября</b></font> Еще одна пара влюбленных сердец соединилась! Только что
+            <b>_Цербер_</b> и <b>Хитрая_Лиса</b> вступили в брак!
+            <BR><font color="#F9FBA8"><b>14 ноября</b></font> Наконец 1е место на 9м с <b>_Цербер_</b>!
+            <BR><font color="#F9FBA8"><b>23 ноября</b></font> Еще одна пара влюбленных сердец соединилась! Только что
+            <b>Безумный_шляпник</b> и <b>Хитрая_Лиса</b> вступили в брак!
+            <BR><font color="#F9FBA8"><b>2 декабря</b></font> Гранд в собирашках
+            <BR><font color="#F9FBA8"><b>5 декабря</b></font> Парный арт на медаль с Безумный_шляпник 1е место=)
+            <BR><font color="#F9FBA8"><b>7 декабря</b></font> Долгожданный одиночный безарт <u>1е место</u>
+            <BR><font color="#F9FBA8"><b>25 декабря</b></font> Лисичке годик:)
+            <BR><b>2012</b>
+            <BR><font color="#F9FBA8"><b>30 января</b></font> 1е место на Чемпионате с командой &quot;Похитители Неба&quot;
+            <BR><font color="#F9FBA8"><b>9 марта</b></font> Отныне Ваши сердца разлучены навек
+            <BR><font color="#F9FBA8"><b>12 марта</b></font> Уникальный образ
+            <BR><font color="#F9FBA8"><b>10 мая</b></font> Свадьба с <b>_Цербер_</b>
+            <BR><font color="#F9FBA8"><b>7 октября</b></font> Еще одна победа на одиночном турнире
+            <BR><font color="#F9FBA8"><b>29 ноября</b></font> Лисичка получила почетное звание одного из трех глав Союза
+            Эльфов
+            <BR><font color="#F9FBA8"><b>31 декабря</b></font> 2е место на Чемпионате с командой &quot;Похитители Неба&quot;
+            <BR><b>2013</b>
+            <BR><font color="#F9FBA8"><b>1 января</b></font> Ап на <font color="#F9FBA8"><b>10</b></font>й
+            <BR><font color="#F9FBA8"><b>8 января</b></font> Создан Бойцовский Клуб
+            <BR><font color="#F9FBA8"><b>7 июня</b></font> Ап на <b><font color="#F9FBA8">11</font></b>й
+            <BR><font color="#F9FBA8"><b>11 июля</b></font> 500 побед на арене
+            <BR><font color="#F9FBA8"><b>15 декабря</b></font> Шамаханка
+            <BR><font color="#F9FBA8"><b>24 декабря</b></font> Вступила в гильду Королевских Лабоходов первой в ЛГ
+            <BR><b>2014</b>
+            <BR><font color="#F9FBA8"><b>18 января</b></font> Отныне... развелась с <b>_Цербер_</b>
+            <BR><font color="#F9FBA8"><b>16 апреля</b></font> [18:31]Поздравляем! Только что Вы вышли замуж за
+            <b>Elrion</b>!
+            <BR><font color="#F9FBA8"><b>26 апреля</b></font> Ап на <font color="#F9FBA8"><b>12</b></font>й
+            <BR><font color="#F9FBA8"><b>15 декабря</b></font> Урановый Щит MKII
+            <BR><font color="#F9FBA8"><b>16 декабря</b></font> Орден Лабиринта Паладинов III-й степени
+            <BR><b>2015</b>
+            <BR><font color="#F9FBA8"><b>20 мая</b></font> Ап на <font color="#F9FBA8"><b>13</b></font>й <img
+              src="../images/forum_smiles/poklon.gif">
+            <BR><font color="#F9FBA8"><b>26 мая</b></font> Орден Лабиринта Паладинов II-й степени
+            <BR><font color="#F9FBA8"><b>17 августа</b></font> Осталось 1671000...
+            <BR><font color="#F9FBA8"><b>27 ноября</b></font> Иииха! Собрали астральные прелести!
+            <BR><b>2016</b>
+            <BR><font color="#F9FBA8"><b>18 января</b></font> Звездочёт, 50% астральной медальки
+            <BR><font color="#F9FBA8"><b>19 января</b></font> Древние Перчатки Шамана
+            <BR><font color="#F9FBA8"><b>11 февраля</b></font> Жук!
+            <BR><font color="#F9FBA8"><b>27 апреля</b></font> Орден Лабиринта Драконов III-й степени
+            <BR><font color="#F9FBA8"><b>18 мая</b></font> Орден Лабиринта Паладинов I-й степени
+            <BR>________________________________________________________________
+            <BR>
+            <BR><b>Турниры:</b>
+            <BR>У Вас новое сообщение! <u><font color="#F9FBA8">Прочесть</font></u>
+            <BR>[21:18] [2011-01-26 21:14:13] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Страна Отцов&quot;!
+            Призовые: 300.
+            <BR>[21:04] [2011-02-23 21:04:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Сила Тьмы&quot;!
+            Призовые: 940.
+            <BR>[21:57] [2011-02-25 21:57:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Неизвестная
+            Война&quot;! Призовые: 280.
+            <BR>[02:04] [2011-03-10 02:04:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Каприз Сильнейших&quot;! Призовые: 900.
+            <BR>[22:09] [2011-03-22 21:44:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Вестник
+            Надежды&quot;! Призовые: 940.
+            <BR>[01:13] [2011-04-06 01:13:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Цена Страха&quot;! Призовые: 1020.
+            <BR>[20:34] [2011-04-21 20:33:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Сказка о
+            Героях&quot;! Призовые: 280.
+            <BR>[22:55] [2011-05-10 22:55:02] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Твой День&quot;!
+            Призовые: 310.
+            <BR>[22:12] [2011-05-23 22:06:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Гвардия Тьмы&quot;!
+            Призовые: 940.
+            <BR>[19:43] [2011-09-20 19:43:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Наважденье&quot;!
+            Призовые: 2160.
+            <BR>[01:47] [2011-10-18 01:47:06] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Возрождение Империи&quot;! Призовые: 5760.
+            <BR>[21:04] [2011-11-03 21:03:03] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Чёрным по
+            Белому&quot;! Призовые: 2900.
+            <BR>[21:21] [2011-11-14 21:21:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Смутное Время&quot;! Призовые: 5660.
+            <BR>[21:07] [2011-12-05 19:35:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Мёртвые Чувства&quot;! Призовые: 3500. Как победитель турнира Вы получаете &quot;Медаль Колдовства&quot;!
+            <BR>[21:09] [2011-12-07 21:08:02] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Злые Сказки&quot;! Призовые: 17170.
+            <BR>[22:47] [2012-01-17 22:42:02] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Мир без
+            Чудес&quot;! Призовые: 960.
+            <BR>[22:44] [2012-02-14 22:43:02] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Страх Долой&quot;!
+            Призовые: 5730.
+            <BR>небыло системки ---------- <b>третье</b> место на турнире &quot;Хранители Мечей&quot;
+            <BR>[21:19] [2012-03-27 21:18:02] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Фаворит
+            Обречен&quot;! Призовые: 1435.
+            <BR>[19:41] [2012-04-19 19:40:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Солнце Ушедшего Дня&quot;! Призовые: 3160.
+            <BR>[17:50] [2012-06-18 17:50:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Ужас Победы&quot;!
+            Призовые: 1080.
+            <BR>небыло системки ---------- <b>второе</b> место на турнире &quot;Остаться Непобежденным&quot;
+            <BR>[20:47] [2012-07-03 20:43:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Признак
+            Мастерства&quot;! Призовые: 1800.
+            <BR>[23:11] [2012-07-24 23:10:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Гонка За
+            Лидером&quot;! Призовые: 2170.
+            <BR>[01:19] [2012-08-16 01:19:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Время Битвы&quot;!
+            Призовые: 1090.
+            <BR>[18:05] [2012-10-07 18:03:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Огненный Дракон&quot;! Призовые: 17370.
+            <BR>[20:59] [2012-10-19 20:59:02] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Чемпион
+            Призрачного Мира&quot;! Призовые: 1250.
+            <BR>[00:08] [2012-11-24 00:07:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Прочь
+            Сомнения&quot;! Призовые: 930.
+            <BR>[23:47] [2012-12-03 23:29:01] Поздравляем! Вы - <font color="#F9FBA8"><b>победитель</b></font> турнира
+            &quot;Преодолевшие Трудности&quot;! Призовые: 17650.
+            <BR>небыло системки ---------- <b>второе</b> место на турнире &quot;Мгновение Свободы&quot;
+            <BR>[20:23] [2013-03-14 20:23:00] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Сила и Честь&quot;!
+            Призовые: 4010.
+            <BR>[19:44] [2014-03-14 19:33:03] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Яркое Солнце&quot;!
+            Призовые: 1150.
+            <BR>[01:02] [2014-04-08 01:02:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Теплилась
+            Надежда&quot;! Призовые: 11210.
+            <BR>[22:17] [2014-05-18 22:17:01] Поздравляем! Вы - <b><font color="#F9FBA8">победитель</font></b> турнира
+            &quot;Грань шансов&quot;! Призовые: 17820.
+            <BR>[21:55] [2014-07-12 21:55:00] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Строгий
+            Выговор&quot;! Призовые: 5930.
+            <BR>[17:58] [2014-07-24 17:58:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Ответный
+            Удар&quot;! Призовые: 2970.
+            <BR>[21:39] [2014-08-14 21:39:00] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Славный
+            Праздник&quot;! Призовые: 7910.
+            <BR>[01:00] [2014-08-16 01:00:01] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Заморская
+            Тактика&quot;! Призовые: 1610.
+            <BR>[15:03] [2014-10-11 15:03:03] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Дневное
+            Проклятье&quot;! Призовые: 1610.
+            <BR>[21:49] [2014-10-28 21:49:03] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Взмах Крыла&quot;!
+            Призовые:
+            <BR>небыло системки ---------- <b>второе</b> место на турнире &quot;Страж Мира&quot;
+            <BR>[22:08] [2014-12-02 21:59:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Будет Светло&quot;!
+            Призовые: 3220.
+            <BR>[03:00] [2014-12-22 18:20:00] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Фаворит&quot;!
+            Призовые: 4930.
+            <BR>[19:11] [2015-03-27 19:11:01] Поздравляем! Вы - <b><font color="#F9FBA8">победитель</font></b> турнира
+            &quot;Урановый Идол&quot;! Призовые: 8670.
+            <BR>[17:34] [2015-04-22 17:23:01] Поздравляем! Вы - <b><font color="#F9FBA8">победитель</font></b> турнира
+            &quot;Выключи Время&quot;! Призовые: 2420.
+            <BR>[19:43] [2015-05-18 19:43:00] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Зависть И
+            Сглаз&quot;! Призовые: 1610.
+            <BR>[2015-12-24 17:49:00] небыло системки ---------- <b>второе</b> место на турнире &quot;Не Было Беды&quot;
+            <BR>[20:51] [2016-01-16 20:48:00] Поздравляем! Вы - заняли <b>третье</b> место на турнире &quot;Хороший
+            Момент&quot;! Призовые: 2250.
+            <BR>[2016-02-28 23:31:01] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Серый Страж Турниров&quot;!
+            Призовые: 7720.
+            <BR>[19:51] [2016-03-21 19:46:01] Поздравляем! Вы - <b><font color="#F9FBA8">победитель</font></b> турнира
+            &quot;Снежный Час&quot;! Призовые: 13500.
+            <BR>[2016-05-18 22:06:00] Поздравляем! Вы - заняли <b>второе</b> место на турнире &quot;Небо и Земля&quot;!
+            Призовые: 4950.
+            <BR>________________________________________________________________
+            <BR><font color="#F9FBA8">***</font><b>Лисизмы</b><font color="#F9FBA8">***</font>
+            <BR>
+            <BR>Лиса знает всё. Потому что она везделисющая.
+            <BR>***
+            <BR>Не все думают как лиса, ибо все не лиса.
+            <BR>***
+            <BR>Не всё хитрое, что лиса!
+            <BR>***
+            <BR>Все, что ни делает лиса - к лучшему. Что не делает - тоже к лучшему.
+            <BR>1е следствие: все, что не лиса - к худшему.
+            <BR>2е следствие: все то, что говорится в адрес лисы, является комплиментом.
+            <BR>***
+            <BR>Кометы есть лисы. 3 доказательства: 1. У них есть хвост. 2. Они рыжие. 3. Они летают.
+            <BR>***
+            <BR>Главное оружие лисы - смех.
+            <BR>***
+            <BR>Не все, что смеется - лиса.
+            <BR>***
+            <BR>Лиса - это страшно. Страшно - это лиса.
+            <BR>***
+            <BR>Из двух зол лиса выбирает то, которое раньше не пробовала.
+            <BR>***
+            <BR>Лисы бывают двух видов - великолепные и просто великолепные. Вторые преобладают.
+            <BR>***
+            <BR>В арсенале каждой лисы должны быть: точилка для когтей, точилка для зубов, &quot;Антиклоп&quot; и
+            расчёска для хвоста.
+            <BR>***
+            <BR>Все окружающее отрицает лис. Лисы отрицают все окружающее. У лис это получается лучше. Мораль: лисы -
+            лучше.
+            <BR>***
+            <BR>Когда лисы воют на луну, луна воет от лис.
+            <BR>***
+            <BR>Лиса - это не то, что падает, а то, что летает!
+            <BR>***
+            <BR>Лисы несут свет знаний. О лисах.
+            <BR>***
+            <BR>Лиса всегда права.
+            <BR>***
+            <BR>Лисота - это страшная сила...
+            <BR>***
+            <BR>Лисота спасет мир! А потом еще раз и еще раз... Пока мир не решит, что нужно спасаться.
+            <BR>***
+            <BR>Жизнь многолика и многохвоста. И все хвосты - лисьи!
+            <BR>***
+            <BR>Если бы в мире не было лис, их стоило бы выдумать. Чем лисы и занимаются по сей день.
+            <BR>***
+            <BR>Текущая версия вашей лисы устарела. Обновите вашу лису.
+            <BR>***
+            <BR>Ваша лиса выполнила недопустимую операцию, в результате чего вы будете закрыты, а лиса пойдет на
+            солнышко.
+            <BR>***
+            <BR>Лисами не рождаются. Ими пребывают.
+            <BR>
+            <BR>
+            <BR>________________________________________________________________
+            <BR>
+            <BR><font color="#F9FBA8">***</font><b>Всякая всячина</b><font color="#F9FBA8">***</font>
+            <BR>
+            <BR>[02:16] Вы получаете эффект Магии Фараонов на неделю!
+            <BR>[02:16] Наконец-то! Многосекундная борьба с чудом магии и искусства ювелирна принесло свои плоды – Вы
+            открыли ларец. Внутри не было ничего материального, лишь теплая аура, которая тут же Вас и окутала. Аура
+            была древней и очень слабой, но даже ее эффекта хватит на неделю, давая Вам новые способности.
+            <BR>
+            <BR>[14:16] К Вашей армии присоединяется Червяк-Выползень! Вы получаете Подорожник (10), Хвощ (10) и Коноплю
+            (10)!
+            <BR>
+            <BR>[21:14] Рядом с костром Вы обнаруживаете незнакомца, закутавшегося в плащ и курящего трубку.
+            Разговорившись, Вы понимаете что имеете дело со Звездочётом, который забрёл сюда, мечтая хоть раз взглянуть
+            на небосвод обратной стороны Ледрака, невидимый ни с одной из точек на поверхности. Вы без труда объясняете
+            ему, что путешествовать с Вами будет намного безопаснее...
+            <BR>[21:14] К Вам присоединился новый последователь!
+            <BR>
+            <BR>[01:10] Не каждый день встретишь представителя администрации в этом месте... Однако сегодня Вам
+            навстречу попался Argon. Вы обратили внимание, что он держит руку за спиной, явно что-то пряча. С улыбкой,
+            он достает из-за спины Букет Розовых Роз! Поздравляем!
+            <BR>
+            <BR>[23:58] Вы натыкаетесь на разбитую летучую лодку афлиганцев. Судя по сохранившейся кое-где краске и
+            узорам обшивки Вы понимаете, что это скорее всего лодка военачальника, или может быть даже самой шамаханской
+            княжны. Обшарив лодку, Вы обнаруживаете потравленную ржавчиной кольчугу. Чудом уцелевшая после крушения и
+            длительного нахождения в воде находка отправляется в Ваш заплечный мешок.
+            <BR>[23:58] Вы находите: Шамаханская Kольчуга.
+            <BR>
+            <BR>[16:45] [2013-04-11 01:10:03] Вдруг, ни с того, ни с сего, Вы почувствовали какое-то шевеление в Вашем
+            рюкзаке... Испугавшись, что это какая-нибудь канализационная крыса дожевывает с голода ваши перчатки, Вы тут
+            же полезли туда.... и обнаружили только что появившегося на свет Подопытного Кролика! Любопытно, но что
+            теперь с ним делать?
+            <BR>[16:45] [2013-04-11 01:10:03] Вы теряете: Яйцо Подопытного Кролика! Вы получаете: Быстрый Кролик!
+            <BR>
+            <BR>[16:50] [2012-12-31 16:29:01] Вы получаете Серебрянную медаль За второе место на чемпионате!
+            <BR>[16:50] [2012-12-31 16:29:01] Вы получаете Переходящий Серебряный Поднос. За второе место в чемпионате!
+            <BR>_
+            <BR>
+            <BR>[18:38] [2012-02-08 16:32:08] Персонаж Безумный_шляпник дарит Вам артефакт: Сфера мудрости
+            <BR>[18:39] [2012-02-08 16:34:25] Персонаж Безумный_шляпник дарит Вам артефакт: Кольцо принцессы света
+            <BR>_
+            <BR>
+            <BR>[14:39] [2012-01-30 13:32:00] Вы получаете Переходящий Кубок Чемпиона За победу в чемпионате!
+            <BR>[14:39] [2012-01-30 13:32:00] Вы получаете Золотую медаль За победу в чемпионате!
+            <BR>_
+            <BR>
+            <BR>[14:48] [2012-01-30 06:30:18] Поздравляем! Вы сразили самого Ученика Госты! За этот невероятный подвиг
+            Вам присваивается Медаль Казематов II-й степени!
+            <BR>_
+            <BR>
+            <BR>Маленькие достижения на бунтах, на память:)
+            <BR>[22:33] [2015-06-07 22:33:00] За время бунта Вы победили 116 марафонщиков и получаете 5800 монет!
+            <BR>
+            <BR>[12:38] [2012-05-05 12:35:01] За время бунта Вы победили 182 марафонщиков и получаете 9100 монет!
+            <BR>
+            <BR>[15:21] [2012-01-30 04:29:00] За время бунта Вы победили 108 марафонщиков и получаете 5400 монет!
+            <BR>
+            <BR>[19:20] [2011-10-20 19:20:01] За время бунта Вы победили 139 марафонщиков и получаете 6950 монет!
+            <BR>
+            <BR>[14:58] [2011-06-13 14:34:01] За время бунта Вы победили 84 марафонщиков и получаете 4200 монет!
+            <BR>
+            <BR>[16:37] [2011-07-16 16:37:00] За время бунта Вы победили 86 марафонщиков и получаете 4300 монет!
+            <BR>_
+            <BR>
+            <BR>[01:02] Вы натыкаетесь на разбитую летучую лодку афлиганцев. Судя по сохранившейся кое-где краске и
+            узорам обшивки Вы понимаете, что это скорее всего лодка военачальника, или может быть даже самой шамаханской
+            княжны. Обшарив лодку, Вы обнаруживаете потравленную ржавчиной кольчугу. Чудом уцелевшая после крушения и
+            длительного нахождения в воде находка отправляется в Ваш заплечный мешок.
+            <BR>[01:02] Вы находите: Шамаханская Kольчуга.
+            <BR>Второй раз:)
+            <BR>_
+            <BR>
+            <BR>[12:00] Среди нагромождений измерений Вам попадаются чьи-то ноги в сапогах скороходах. Ногам они явно
+            без надобности. Они становятся Вашей законной добычей.
+            <BR>_
+            <BR>
+            <BR>[20:01] Вы нашли совершенно бесхозного червяка, который, похоже, не прочь к Вам присоединиться. Впрочем,
+            что думает об этом сам червяк, узнать не представляется возможным, потому что он очень
+            воспитанный.Червяк-Выползень пополняет Вашу армию!
+            <BR>_
+            <BR>
+            <BR>[23:38] Хитрая_Лиса щедро расплескивает шампанское! Пусть брызги веселья от напитка радости достанутся
+            каждому!
+            <BR>_
+            <BR>
+            <BR>[19:09] Вы натыкаетесь на разбитую летучую лодку афлиганцев.
+            <BR>Судя по сохранившейся кое-где краске и узорам обшивки Вы понимаете, что это скорее всего лодка
+            военачальника, или может быть даже самой шамаханской княжны. Обшарив лодку, Вы обнаруживаете потравленную
+            ржавчиной кольчугу. Чудом уцелевшая после крушения и длительного нахождения в воде находка отправляется в
+            Ваш заплечный мешок.
+            <BR>[19:09] Вы находите: Шамаханская Кольчуга.
+            <BR>_
+            <BR>
+            <BR>Турнир &quot;Каприз Сильнейших&quot; закончился блистательной победой пары Воскрешенный и Хитрая_Лиса!
+            <BR>__
+            <BR>[22:00] К Вам подходит Administrator и, после красивых поздравлений, изящным жестом вручает Красивый
+            Букет!
+            <BR>_
+            <BR>
+            <BR>22:36:12&gt; Хитрая_Лиса остается в одиночестве. Все ретировались до драки...
+            <BR>
+            <BR>_
+            <BR>
+            <BR>00.41.39&gt;Хитрая_Лиса[174/238] vs Лень[-9/75] Хитрая Лиса борется с ленью...и побеждает)))
+            <BR>_
+            <BR>
+            <BR>На 5м:
+            <BR>[19:43] Вы проигрываете в битве... На этом марафон закончен. Вы успешно прошли 18 этапов. В награду вы
+            получаете 203 EXP и 379 Золота. Вы установили личный рекорд и получаете дополнительно 40 EXP!!!. Весь
+            набранный опыт становится боевым опытом Вашего клана
+            <BR>
+            <BR>На 9м:
+            <BR>[01:55] Вы проигрываете в битве... На этом марафон закончен. Вы успешно прошли 22 этапов. В награду вы
+            получаете 527 EXP и 702 Золота. Вы установили личный рекорд и получаете дополнительно 105 EXP!!!. Весь
+            набранный опыт становится боевым опытом Вашего клана.
+            <BR>__
+            <BR>
+            <BR>На бунте:
+            <BR>[15:56] Вы побеждаете в битве!!! (повержено противников: 6) За проведенное сражение Вы получаете 8
+            EXP!!! Ваша обучаемость позволяет Вам получить дополнительно 5 EXP!!! Уровень Вашего клана приносит
+            дополнительные 1 опыта.
+            <BR>_
+            <BR>
+            <BR><font color="#F9FBA8">Отдел по борьбе с наглыми особами <b>в канализации</b></font>.:D
+            <BR> <img src="../images/forum_smiles/ivan.gif">
+            <BR>________________________________________________________________
+            <BR>
+            <BR> <img src="../images/forum_smiles/writer.gif">
+            <BR>
+            <BR><i><b><font color="#F9FBA8">Х</font></b>олодным утром ты вдруг выглянешь в окно,
+              <BR><b><font color="#F9FBA8">И</font></b> снег повалит, не жалея осень,
+              <BR><b><font color="#F9FBA8">Т</font></b>ы улыбнёшься, будто между прочим,
+              <BR><b><font color="#F9FBA8">Р</font></b>исуя в мыслях светлое кино.
+              <BR>...<b><font color="#F9FBA8">А</font></b>кации цветут, танцуют птицы,
+              <BR><b><font color="#F9FBA8">Я</font></b>снеет небо, солнце веселится,
+              <BR>
+              <BR><b><font color="#F9FBA8">Л</font></b>аскает волосы приятный летний ветер
+              <BR><b><font color="#F9FBA8">И</font></b> яркий день сменяет звёздный вечер...
+              <BR><b><font color="#F9FBA8">С</font></b>екрета нет. И хитрости нет тоже.
+              <BR><b><font color="#F9FBA8">А</font></b> только то, что видим ты и я.
+              <BR>Мы можем взгляд на всё иметь похожий,
+              <BR>А можем взглядом всё менять
+              <BR>вокруг
+              <BR>себя.</i>
+            <BR>
+            <BR><font color="#F9FBA8">10.04.11</font>
+            <BR>________________________________________________________________
+            <BR>
+            <BR><font color="#F9FBA8">***</font><b>Прошлые девизы</b><font color="#F9FBA8">*** </font>
+            <BR>
+            <BR>Любовь спасет мир, а лису спасет хвост.
+            <BR>Удача - это вера, надежда и любовь
+            <BR>Меня похитил пингвин. Мы уплываем на льдине.
+            <BR>Судьба играет человеком, а человек играет на трубе
+            <BR>[19:29] Хитрая_Лиса поднимает бокал и выпивает за Небеса...
+            <BR>Я лиса, и я не хочу ничего делать! Я хочу фыр-фыр-фыр...
+            <BR>Может, я шла не туда, куда следовало бы. Но, пожалуй, я пришла куда надо.
+            <BR>Хитрая_Лиса поднимает бокал шампанского за успехи своего клана (Союз Эльфов) в 2014 году!
+            <BR>&quot;Армагеддон был вчера, а сегодня у нас действительно серьёзная проблема&quot;
+            <BR>Только в тот миг, когда все козыри уже на руках, но ещё не на столе игрок может быть счастлив
+            по-настоящему.
+            <BR>Свободу лисам! Лисам - свободный доступ в интернет!!!
+            <BR>
+            <BR>http://fantasyland.ru/cgi/daily_combat.php?schedule <font color="#9cff00">---</font> выживалки
+            <BR>http://fantasyland.ru/cgi/castle_schedule.php <font color="#9cff00">---</font> штурмы
+            <BR>http://fantasyland.ru/cgi/caravan.php?shedule <font color="#9cff00">---</font> караваны
+            <BR>http://www.fantasyland.ru/cgi/forum_rooms_a.php
+            <BR>http://lg.fortis-ts.ru/on/ <font color="#9cff00">---</font> локатор
+            <BR>http://lg.fortis-ts.ru/enc/ <font color="#9cff00">---</font> энциклопедия + переодевалка
+            <BR>
+            <BR>Удача (Уровень Персонажа - 2) * 2 = 22
+            <BR>СЭ Уровень Персонажа - 1 = 12
+            <BR>
+            <BR>Заморские зелья http://fantasyland.ru/cgi/item_desc.php?id=603
+            <BR>
+            <BR>1. Взморье, нужно: 14+ удачи, защита колды 50+, можно без зоя
+            <BR>2. Пустыня, нужно: 27+ удачи, защита света 40+ и хаоса 60+, можно без зоя
+            <BR>3. Степь или Пустошь: 28+ удачи, защита трёх магий 26-19-26, можно без зоя если не ставить рыц
+            <BR>4. Лес: 23+ удачи (лучше больше), защита света 60+ и хаоса 30+, ЗОЯ!
+            <BR>
+            <BR>драгонборн 2.5к
+            <BR>
+            <BR>___________<font color="#9cff00">88888888</font>
+            <BR>__________<font color="#9cff00">888</font>___<font color="#9cff00">8888</font>
+            <BR>______<font color="#9cff00">8888</font>________<font color="#9cff00">88</font>____<font color="#9cff00">8888888</font>
+            <BR>____<font color="#9cff00">88888</font>__________<font color="#9cff00">88</font>__<font color="#9cff00">888</font>____<font
+              color="#9cff00">888</font>
+            <BR>___<font color="#9cff00">888</font>___<font color="#9cff00">8</font>__________<font
+              color="#9cff00">8</font>_<font color="#9cff00">88</font>________<font color="#9cff00">8</font>
+            <BR>__<font color="#9cff00">888</font>___<font color="#9cff00">888</font>________<font
+              color="#9cff00">888</font>____<font color="#9cff00">888</font>__<font color="#9cff00">888</font>
+            <BR>__<font color="#9cff00">888</font>____<font color="#9cff00">888</font>_______<font
+              color="#9cff00">88</font>____<font color="#9cff00">888</font>____<font color="#9cff00">8888</font>
+            <BR>___<font color="#9cff00">888</font>_____<font color="#9cff00">88</font>______<font
+              color="#9cff00">88</font>____<font color="#9cff00">88</font>________<font color="#9cff00">88</font>
+            <BR>_____<font color="#9cff00">8888</font>___________<font color="#9cff00">8</font>____<font
+              color="#9cff00">8</font>_________<font color="#9cff00">888</font>
+            <BR>________<font color="#9cff00">88888</font>_______<font color="#9cff00">8</font>_____________<font
+              color="#9cff00">8888</font>
+            <BR>___________<font color="#9cff00">888888888</font>_____________<font color="#9cff00">888</font>
+            <BR>__<b><i>Союз</i></b>_________<font color="#9cff00">888888888888888888</font>
+            <BR>___<b><i>Эльфов</i></b>______<font color="#9cff00">8888</font>_______<font color="#9cff00">888</font>
+            <BR>_____________<font color="#9cff00">888</font>_ <font color="#9cff00">8</font>___<font
+              color="#9cff00">8</font>_____<font color="#9cff00">888</font>
+            <BR>____________<font color="#9cff00">88</font>___<font color="#9cff00">8</font>____<font
+              color="#9cff00">88</font>______<font color="#9cff00">88</font>
+            <BR>___________<font color="#9cff00">88</font>___<font color="#9cff00">88</font>____<font color="#9cff00">888</font>______<font
+              color="#9cff00">88</font>
+            <BR>__________<font color="#9cff00">8</font>_____<font color="#9cff00">88</font>____<font color="#9cff00">888</font>_______<font
+              color="#9cff00">88</font>
+            <BR>_________<font color="#9cff00">88</font>_____<font color="#9cff00">88</font>_____<font
+              color="#9cff00">8</font>________<font color="#9cff00">88</font>
+            <BR>_________<font color="#9cff00">88</font>_____<font color="#9cff00">88</font>_____________<font
+              color="#9cff00">88</font>
+            <BR>_________<font color="#9cff00">888</font>_____<font color="#9cff00">88</font>______<font
+              color="#9cff00">8888888</font>
+            <BR>_________<font color="#9cff00">88</font>_<font color="#9cff00">8</font>____<font
+              color="#9cff00">888</font>____<font color="#9cff00">88</font>_<font color="#9cff00">888</font>
+            <BR>__________<font color="#9cff00">888</font>______<font color="#9cff00">8888888</font>
+            <BR>
+            <BR>http://savepic.net/5177881.png
+          </TD>
+        </TR>
+      </TABLE>
+
+      <SCRIPT> ShowBlockBottom(); </SCRIPT>
+    </TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>
