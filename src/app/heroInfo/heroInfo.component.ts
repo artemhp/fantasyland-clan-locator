@@ -17,11 +17,13 @@ export class HeroInfoComponent implements OnInit {
   private lvl;
   private avaSmall;
   private medals;
-  private getStats;
+  private stats;
+  private health;
   private _heroId;
   private _heroStatus;
   private errorMessage: string;
   private subscription;
+  private showMedals = false;
 
   constructor(
     private _communicateService: CommunicateService,
@@ -36,13 +38,16 @@ export class HeroInfoComponent implements OnInit {
   }
 
   getInfo() {
+
     this.lvl = "...";
     this.subscription = this._heroInfoService.getHeroInfo(this._heroId).subscribe(
       asd => {
         this.lvl = asd['levelComplect'];
         this.avaSmall = asd['avaSmall'];
         this.medals = asd['medals'];
-        this.getStats= asd['getStats'];
+        this.stats= asd['getStats'];
+        this.health = asd['health'];
+
       },
       error => {
         this.errorMessage = <any>error

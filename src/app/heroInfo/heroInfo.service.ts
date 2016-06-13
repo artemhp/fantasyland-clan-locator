@@ -32,10 +32,33 @@ export class HeroInfoService {
     let getimgAvaDom = jQuery(data).find("img[height=225]").attr('src');
     let medalReg = /ShowRank\('([\w\d.]+)'/gi;
     let getMedals = [];
+    let health = {};
 
-    let getStats = jQuery(data).find("[title='Сила']").closest("table").closest("table").html();
-    console.log(getStats);
-    let arrayStats = [
+    // let getStats = jQuery(data).find("[title='Сила']").closest("table").closest("table").html();
+    // console.log(getStats);
+
+    let getStats = {};
+    let getStats2 = {};
+
+    let arrayStats2 = [
+      'Защита от Дам',
+      'Защита от Драконов',
+      'Защита от Рыцарей',
+      'Защита от Света',
+      'Защита от Хаоса',
+      'Защита от Колдовства',
+      'Защита от Астрала'
+    ];
+    let arrayStats3 = [
+      'Атака Драконов',
+      'Атака Рыцарей',
+      'Атака Дам',
+      'Атака Света',
+      'Атака Хаоса',
+      'Атака Колдовства',
+      'Атака Астрала'
+    ];
+    let arrayStats1 = [
       'Сила',
       'Ум',
       'Удача',
@@ -45,43 +68,58 @@ export class HeroInfoService {
       'Магия Хаоса',
       'Магия Света',
       'Колдовство',
-
-      'Атака Драконов',
-      'Атака Рыцарей',
-      'Атака Дам',
-      'Защита Дам',
-      'Защита Рыцарей',
-      'Атака Света',
-      'Защита от Света',
-      'Атака Хаоса',
-      'Защита от Хаоса',
-      'Атака Колдовства',
-      'Защита от Колдовства',
-      'Атака Астрала',
-      'Защита от Астрала',
-
       'Скорость',
+      'Восстановление Жизни',
+      'Сила Эффектов',
       'Концентрация',
       'Защита от Яда'
     ];
-    getStats = {'Сила': 1};
-    // console.log(data);
-    // debugger;
+
+    let textToHtml = jQuery(data);
+
+    arrayStats1.map(function (el) {
+      if (el) {
+        let statsValue = textToHtml.find("[title='"+el+"']").closest("td").next("td").text() || "0";
+        getStats[el] = statsValue;
+      }
+    });
+
+    arrayStats2.map(function (el) {
+      if (el) {
+        let statsValue = textToHtml.find("[title='"+el+"']").closest("td").next("td").text() || "0/0";
+        getStats[el] = statsValue.split("/")[1];
+      }
+    });
+
+    arrayStats3.map(function (el) {
+      if (el) {
+        let statsValue = textToHtml.find("[title='"+el+"']").closest("td").next("td").text() || "0/0";
+        getStats[el] = statsValue.split("/")[0];
+      }
+    });
 
     var match;
     while (( match = medalReg.exec(data) ) != null) {
       getMedals.push(match[1]);
     }
 
-
     let myRe = /[\w\d.]+$/gi;
     let imgAva = myRe.exec(getimgAvaDom);
+
+    let myRe2 = /([\d]+)\/([\d]+)/gi;
+    let healthDom = jQuery(data).find("#hp1").text();
+    let getHealth = myRe2.exec(healthDom);
+    health = {
+      'health': getHealth[1],
+      'total': getHealth[2]
+    };
 
     return {
       'levelComplect': levelComplect,
       'avaSmall': imgAva,
       'medals': getMedals,
-      'getStats': getStats
+      'getStats': getStats,
+      'health': health
     };
   }
 

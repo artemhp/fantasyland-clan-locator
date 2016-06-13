@@ -1,17 +1,181 @@
-<div class="row">
+<div class="row heroInfo-row">
   <div class="col-xs-1">
-    <img src="http://fantasyland.ru/images/players_mini/{{avaSmall}}" alt="">
-  </div>
-  <div class="col-xs-1">
-    <strong>{{lvl}}</strong>
+    <div class="ava">
+      <img src="http://fantasyland.ru/images/players_mini/{{avaSmall}}" alt="">
+    </div>
   </div>
   <div class="col-xs-3">
-    <div>
-      <img *ngFor="let medal of medals" src="http://fantasyland.ru/images/medals/{{medal}}" alt="">
+    <div *ngIf="health">
+      <img src="http://fantasyland.ru/images/miscellaneous/hp.gif" alt="">
+      [{{health.health}}/{{health.total}}]
+    </div>
+    <div *ngIf="stats">
+      <span *ngIf="stats['Концентрация'] != 0">
+        <img src="http://fantasyland.ru/images/miscellaneous/conc.gif" alt="Концентрация">
+        {{stats['Концентрация']}}
+      </span>
+      <span *ngIf="stats['Защита от Яда'] != 0">
+        <img src="http://fantasyland.ru/images/miscellaneous/pp.gif" alt="Защита от Яда">
+        {{stats['Защита от Яда']}}
+      </span>
+      <span *ngIf="stats['Сила Эффектов'] != 0">
+        <img src="http://fantasyland.ru/images/miscellaneous/m_prot.gif" alt="Сила Эффектов">
+        {{stats['Сила Эффектов']}}
+      </span>
+      <span *ngIf="stats['Восстановление Жизни'] != 0">
+        <img src="http://fantasyland.ru/images/miscellaneous/regen_hp.gif" alt="Восстановление Жизни">
+        {{stats['Восстановление Жизни']}}
+      </span>
+      <span *ngIf="stats['Скорость'] != 0">
+        <img src="http://fantasyland.ru/images/miscellaneous/speed.gif" alt="Скорость">
+        {{stats['Скорость']}}
+      </span>
+    </div>
+    <div *ngIf="stats">Уровень обмундирования: <strong>{{lvl}}</strong></div>
+    <div *ngIf="stats">
+      Наград: <strong>{{medals.length}}</strong>
+      <span class="showDetails" *ngIf="!showMedals" (click)="showMedals = !showMedals">
+        <img src="http://fantasyland.ru/images/miscellaneous/e_plus.gif" alt="">
+      </span>
+      <span class="showDetails" *ngIf="showMedals" (click)="showMedals = !showMedals">
+        <img src="http://fantasyland.ru/images/miscellaneous/e_minus.gif" alt="">
+      </span>
     </div>
   </div>
-  <div class="col-xs-4">
-    <div [innerHTML]="getStats">
+  <div class="col-xs-8" *ngIf="stats">
+    <div class="heroInfo-stats-wrap">
+      <div class="heroInfo-stats1">
+        <div class="row">
+          <div class="col-xs-4">
+            <table>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/strength.gif" alt="Сила"></td>
+                <td>{{stats['Сила']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/intelligence.gif" alt="Ум"></td>
+                <td>{{stats['Ум']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/luck.gif" alt="Удача"></td>
+                <td>{{stats['Удача']}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-xs-4">
+            <table>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/mastery_d.gif" alt=""></td>
+                <td>{{stats['Власть над Драконами']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/mastery_k.gif" alt=""></td>
+                <td>{{stats['Власть над Рыцарями']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/mastery_l.gif" alt=""></td>
+                <td>{{stats['Власть над Дамами']}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-xs-4">
+            <table>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/magic_c.gif" alt=""></td>
+                <td>{{stats['Магия Хаоса']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/magic_h.gif" alt=""></td>
+                <td>{{stats['Магия Света']}}</td>
+              </tr>
+              <tr>
+                <td><img src="http://fantasyland.ru/images/miscellaneous/magic_s.gif" alt=""></td>
+                <td>{{stats['Колдовство']}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="heroInfo-stats2">
+        <div class="row">
+          <div class="col-xs-6">
+            <table>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_d.gif" alt="Атака Драконов">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_d.gif" alt="Защита от Драконов">
+                </td>
+                <td>
+                  {{stats['Атака Драконов']}}/{{stats['Защита от Драконов']}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_k.gif" alt="Атака Рыцарей">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_k.gif" alt="Защита от Рыцарей">
+                </td>
+                <td>
+                  {{stats['Атака Рыцарей']}}/{{stats['Защита от Рыцарей']}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_l.gif" alt="Атака Дам">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_l.gif" alt="Защита от Дам">
+                </td>
+                <td>
+                  {{stats['Атака Дам']}}/{{stats['Защита от Дам']}}
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-xs-6">
+            <table>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_c.gif" alt="Атака Хаоса">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_c.gif" alt="Защита от Хаоса">
+                </td>
+                <td>
+                  {{stats['Атака Хаоса']}}/{{stats['Защита от Хаоса']}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_h.gif" alt="Атака Света">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_h.gif" alt="Защита от Света">
+                </td>
+                <td>
+                  {{stats['Атака Света']}}/{{stats['Защита от Света']}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_s.gif" alt="Атака Колдовства">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_s.gif" alt="Защита от Колдовства">
+                </td>
+                <td>
+                  {{stats['Атака Колдовства']}}/{{stats['Защита от Колдовства']}}
+                </td>
+              </tr>
+              <tr *ngIf="stats['Атака Астрала'] != 0 || stats['Защита от Астрала'] != 0">
+                <td>
+                  <img src="http://fantasyland.ru/images/miscellaneous/attack_a.gif" alt="Атака Астрала">
+                  <img src="http://fantasyland.ru/images/miscellaneous/defence_a.gif" alt="Защита от Астрала">
+                </td>
+                <td>
+                  {{stats['Атака Астрала']}}/{{stats['Защита от Астрала']}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+<div *ngIf="showMedals" class="medalsList">
+  <div *ngFor="let medal of medals" >
+    <img src="http://fantasyland.ru/images/medals/{{medal}}" alt="">
   </div>
 </div>

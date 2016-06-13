@@ -22,7 +22,7 @@ body {
   background-color: #a6a6a6;
   background-image: url("http://fantasyland.ru/images/pic/bg_title.jpg");
 }
-.container-heroes-wrap .row:hover {
+.container-heroes-wrap >div:hover {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 .container-heroes-wrap >div:nth-of-type(even) {
@@ -55,4 +55,90 @@ body {
   left: 100%;
   z-index: 100;
   top: 0;
+}
+
+.stats-table {
+  width: 220px;
+}
+
+.ava {
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 54px;
+  height: 79px;
+  position: relative;
+}
+.ava img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.heroName-level,
+.heroName-guild,
+.heroName-name {
+  display: inline-block;
+}
+
+.heroName-level {
+  width: 60px;
+}
+
+.heroName-guild {
+  width: 80px;
+}
+
+.showDetails {
+  cursor: pointer;
+}
+
+.heroInfo-row {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.heroInfo-stats1,
+.heroInfo-stats2 {
+  background: rgba(101,101,101,0.5);
+  border: 1px solid #B6B6B6;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  /*font-size: 10px;*/
+  padding: 7px;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.heroInfo-stats-wrap {
+  display: flex;
+  align-items: flex-start;
+}
+
+.heroInfo-stats1 {
+  width: 220px;
+  margin-right: 2px;
+}
+.heroInfo-stats2 {
+  width: 250px;
+}
+
+.heroInfo-stats1 img,
+.heroInfo-stats2 img{
+  margin-right: 5px;
+}
+
+.medalsList div {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: rgb(101, 101, 101);
+  margin: 2px;
+  text-align: center;
+  border: 1px solid #B6B6B6;
+
+}
+
+.medalsList img {
+  transform: scale(0.7);
 }

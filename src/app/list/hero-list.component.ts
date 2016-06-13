@@ -69,11 +69,11 @@ export class HeroListComponent implements OnInit {
   }
 
   refreshList() {
-    this.getHeroes(this.model.clan);
     this._communicateService.dispatchEvent("");
     this.subscriptionGetLocations.unsubscribe();
     this.subscriptionGetRoom.unsubscribe();
     this.subscriptionGetHeroes.unsubscribe();
+    this.getHeroes(this.model.clan);
   }
 
   ngOnInit() {
@@ -97,10 +97,15 @@ export class HeroListComponent implements OnInit {
   }
 
   getHeroes(el) {
-
     this.subscriptionGetHeroes = this._heroService.getHeroes(el).subscribe(
       heroes => {
-        this.heroes = heroes;
+        this.heroes = [];
+
+        let heroList = heroes;
+        heroList.map(function(el){
+          el['showDetails'] = false;
+          this.heroes.push(el);
+        }.bind(this));
         this.heroesOnline = new FilterHeroesByOnline().transform(heroes, []).length;
       },
       error => { this.errorMessage = <any>error }
