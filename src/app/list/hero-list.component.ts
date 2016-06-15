@@ -78,7 +78,7 @@ export class HeroListComponent implements OnInit {
 
     this.getHeroes(this.model.clan);
     this.clanList = this._storageService.clans;
-    this.sortList = [{ 'sort': 'location', 'name': 'По локации' }, { 'sort': 'date', 'name': 'По времени' }];
+    this.sortList = [{ 'sort': 'location', 'name': 'По локации' }, { 'sort': 'date', 'name': 'По времени' }, { 'sort': 'lvl', 'name': 'По уровню' }];
 
     this.subscriptionGetLocations = this._heroLocationService.getLocations()
       .subscribe(

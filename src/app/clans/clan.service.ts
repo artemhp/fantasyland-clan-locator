@@ -86,7 +86,7 @@ export class HeroService {
             combat: "0",
             date: moment("2051-05-03 16:05:10 +03:00", "YYYY-MM-DD hh:mm:ss Z"),
             style: match2[4],
-            level: match2[3],
+            level: parseInt(match2[3]),
             color: match2[5],
             guild: listGuild,
             gender: gender[1]

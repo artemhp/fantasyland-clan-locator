@@ -13,8 +13,27 @@ export class SortArray implements PipeTransform {
       if (a['date'] > b['date']) return -1;
     };
 
+    var sorByLvl = function(a: Hero, b: Hero) {
+      return b['level'] - a['level'];
+    };
+
     if (value && args == "date") {
-      value.sort(sorByDate);
+      let onlineArray = [];
+      let offlineArray = [];
+      value.map(function(el){
+        if (el['status']) {
+          onlineArray.push(el);
+        } else {
+          offlineArray.push(el);
+        }
+      });
+
+      onlineArray = onlineArray.sort(sorByLvl);
+
+      value = onlineArray.concat(offlineArray);
+
+    } else if (value && args == "lvl") {
+      value.sort(sorByLvl);
     } else if (value && args == "location") {
 
       let groupByLocation: Array<any> = [];

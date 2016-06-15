@@ -174,7 +174,9 @@
     </div>
   </div>
 </div>
-<div *ngIf="!stats">Загрузка...</div>
+<div *ngIf="!stats">
+  Загрузка...
+</div>
 <div *ngIf="showMedals" class="medalsList">
   <div *ngFor="let medal of medals" >
     <img src="http://fantasyland.ru/images/medals/{{medal}}" alt="">
