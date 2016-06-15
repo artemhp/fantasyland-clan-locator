@@ -3,7 +3,6 @@ import {Hero}              from '../heroes/hero';
 
 import {HeroService}       from '../clans/clan.service';
 import {CommunicateService}       from './communicate-service';
-// import {HeroInfoService}       from '../clans/hero.service';
 import {ClanListService}   from '../clans/clan-list.service';
 import {HeroLocationService}   from '../location/hero-location.service';
 import {StorageService}   from '../shared/storage.service';
@@ -23,7 +22,6 @@ declare var jQuery:any;
 
 @Component({
   selector: 'hero-list',
-  styles: ['.error {color:red;}'],
   providers: [CommunicateService, HeroService, ClanListService, HeroLocationService], //HeroInfoService
   directives: [HeroStyleDirective, HeroLocationComponent, HeroGuildComponent, HeroInfoComponent],
   pipes: [SortArray, FilterHeroesByOnline],
@@ -47,7 +45,7 @@ export class HeroListComponent implements OnInit {
   locations: any;
   rooms: any;
   model: any = {
-    clan: 109,
+    clan: localStorage['clan'] || 109,
     sortBy: 'date'
   };
   subscription = {
@@ -60,12 +58,12 @@ export class HeroListComponent implements OnInit {
   subscriptionGetRoom:Subscription;
   subscriptionGetHeroes:Subscription;
 
-
   roomStatus: boolean = false;
   locationStatus: boolean = false;
 
   clanChange() {
     this.getHeroes(this.model.clan);
+    localStorage['clan'] = this.model.clan;
   }
 
   refreshList() {
@@ -99,28 +97,27 @@ export class HeroListComponent implements OnInit {
   getHeroes(el) {
     this.subscriptionGetHeroes = this._heroService.getHeroes(el).subscribe(
       heroes => {
+        let heroList;
         this.heroes = [];
-
-        let heroList = heroes;
+        heroList = heroes;
         heroList.map(function(el){
           el['showDetails'] = false;
+          el['dateFromNow'] = el.date.locale("ru").fromNow();
+          el['dateDiff'] = this.showDIff(el.date);
           this.heroes.push(el);
         }.bind(this));
         this.heroesOnline = new FilterHeroesByOnline().transform(heroes, []).length;
       },
       error => { this.errorMessage = <any>error }
       );
-
   }
 
   showDIff(el) {
-    if (this.heroes[el]) {
-      let a = this.heroes[el].date;
-      let b = moment();
-      return b.diff(a, 'days'); // 86400000;
-    } else {
-      return 10000000;
-    }
+    let now, heroDate, diff;
+    now = moment().utcOffset(3);
+    heroDate = el;
+    diff = now.diff(heroDate, 'minutes');
+    return diff;
   }
 
 }

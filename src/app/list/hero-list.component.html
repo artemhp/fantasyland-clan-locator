@@ -71,9 +71,9 @@
       </div>
       <div class="col-xs-2">
         <div class="" *ngIf="hero.location1 !== 'Unknown'">
-          <span *ngIf="hero.status" class="text-success">Онлайн</span>
+          <span *ngIf="hero.status" class="text-success">Online</span>
             <span class="text-danger" *ngIf="!hero.status">
-              {{ hero.date.locale("ru").fromNow() }}
+              {{ hero.dateFromNow }}
             </span>
         </div>
         <div *ngIf="hero.location1 == 'Unknown'">

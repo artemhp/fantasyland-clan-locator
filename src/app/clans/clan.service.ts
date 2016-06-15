@@ -26,7 +26,6 @@ export class HeroService {
 
     res.text().split(");").map(function(el, index) {
 
-      let infoColor = "0000"
       let infoPart = el.split("#w");
       var myRegexp1 = /([0-9]+#[0-9]+#[0-9]+)#([\w\u0400-\u04FF-_0-9]+)#([0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+)#([0-9]+)/gi;
       var match1 = myRegexp1.exec(infoPart[0]);
@@ -35,7 +34,6 @@ export class HeroService {
 
 
       var generateObj;
-
 
       if (match1 && match2) {
 
@@ -46,7 +44,6 @@ export class HeroService {
         var gender = myRegexp4.exec(list[list.length - 1]);
 
         var status = match1[1].split("#");
-        // console.log(match1[1]);
         var statusOnline = false;
 
         if (status[0] && status[0] == "1") {
@@ -103,9 +100,7 @@ export class HeroService {
     return arrayHerroes || {};
   }
   private handleError(error: any) {
-    // In a real world app, we might send the error to remote logging infrastructure
     let errMsg = error.message || 'Server error';
-    // console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
 

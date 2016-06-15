@@ -142,3 +142,5 @@ body {
 .medalsList img {
   transform: scale(0.7);
 }
+
+.error {color:red;}
