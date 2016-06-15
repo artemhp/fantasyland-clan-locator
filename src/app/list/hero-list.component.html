@@ -2,16 +2,21 @@
   <div class="row">
     <div class="col-xs-2">
       <div class="">
-          <button type="button" class="btn btn-sm btn-primary btn-block" (click)="refreshList()" name="button">
+          <button type="button" class="btn btn-primary btn-block" (click)="refreshList()" name="button">
             Обновить
           </button>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-5">
       <div class="form-group">
         <select [(ngModel)]="model.clan" (ngModelChange)="clanChange()" class="form-control" required>
           <option *ngFor="let p of clanList" [value]="p.id">{{p.name}}</option>
         </select>
+      </div>
+    </div>
+    <div class="col-xs-1">
+      <div class="form-group">
+        <input type="checkbox" [(ngModel)]="model.heroesActiveStatus" (ngModelChange)="statusChange()">
       </div>
     </div>
     <div class="col-xs-2" *ngIf="heroes">
@@ -32,13 +37,13 @@
   </div>
 </div>
 <div class="container container-heroes-wrap">
-  <div *ngFor="let hero of heroes | sortArray: model.sortBy">
+  <div *ngFor="let hero of heroes | sortArray: model.sortBy | showActive:model.heroesActiveStatus">
     <div  class="row">
       <div class="col-xs-4">
         <div class="heroName">
           <span class="heroName-level">[Lvl:{{hero.level}}]</span>
           <span class="heroName-guild"><guild *ngFor="let guild of hero.guild" guildId="{{guild}}"></guild></span>
-          <span class="heroName-name"><span [heroStyle]="{style: hero.style, color: hero.color}" class="hero-login">{{ hero.name }}</span></span>
+          <span class="heroName-name hero-login"><span [heroStyle]="{style: hero.style, color: hero.color}">{{ hero.name }}</span></span>
         </div>
       </div>
       <div class="col-xs-2">

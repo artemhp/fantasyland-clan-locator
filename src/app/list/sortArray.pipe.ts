@@ -30,7 +30,7 @@ export class SortArray implements PipeTransform {
 
       onlineArray = onlineArray.sort(sorByLvl);
 
-      value = onlineArray.concat(offlineArray);
+      value = onlineArray.concat(offlineArray.sort(sorByDate));
 
     } else if (value && args == "lvl") {
       value.sort(sorByLvl);

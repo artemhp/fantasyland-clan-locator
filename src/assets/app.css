@@ -31,7 +31,8 @@ body {
 .hero-login {
   background-color: #a6a6a6;
  /*-webkit-text-stroke: 1px #a6a6a6;*/
-  padding: 1px 6px;
+  padding: 0px 6px;
+  font-size: 13px;
   border-radius: 5px;
 }
 .text-success {

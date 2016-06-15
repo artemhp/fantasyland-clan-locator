@@ -2,29 +2,39 @@ import {Injectable}     from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Hero}           from '../heroes/hero';
 import {Observable}     from 'rxjs/Observable';
-declare var moment: any;
+declare var moment:any;
 
 @Injectable()
 export class HeroService {
-  constructor(private http: Http) { }
-  private _heroesUrl = localStorage.getItem('server')+'/technical_clan_status.php?clan_id=109';  // URL to web api
-  getHeroes(clanId): Observable<Hero[]> {
+  constructor(private http:Http) {
+  }
 
-    this._heroesUrl = localStorage.getItem('server')+'/cgi/technical_clan_status.php?clan_id=' + clanId;
+  private _heroesUrl = localStorage.getItem('server') + '/technical_clan_status.php?clan_id=109';  // URL to web api
+  getHeroes(clanId):Observable<Hero[]> {
+
+    this._heroesUrl = localStorage.getItem('server') + '/cgi/technical_clan_status.php?clan_id=' + clanId;
     return this.http.get(this._heroesUrl)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
 
-  private extractData(res: Response) {
+  private extractData(res:Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
 
-    let arrayHerroes: any[] = [];
+    function showDIff(el) {
+      let now, heroDate, diff;
+      now = moment().utcOffset(3);
+      heroDate = el;
+      diff = now.diff(heroDate, 'minutes');
+      return diff;
+    }
 
-    res.text().split(");").map(function(el, index) {
+    let arrayHerroes:any[] = [];
+
+    res.text().split(");").map(function (el, index) {
 
       let infoPart = el.split("#w");
       var myRegexp1 = /([0-9]+#[0-9]+#[0-9]+)#([\w\u0400-\u04FF-_0-9]+)#([0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+)#([0-9]+)/gi;
@@ -51,6 +61,8 @@ export class HeroService {
           match1[3] = "2050-05-03 16:05:10";
         }
 
+
+        let momentDate = moment(match1[3] + " +03:00", "YYYY-MM-DD hh:mm:ss Z");
         generateObj = {
           id: index,
           name: match1[2],
@@ -59,13 +71,16 @@ export class HeroService {
           location2: status[2],
           location: match1[1],
           combat: match1[4],
-          date: moment(match1[3] + " +03:00", "YYYY-MM-DD hh:mm:ss Z"),
+          date: momentDate,
           style: match2[4],
           level: match2[3],
           color: match2[5],
           guild: listGuild,
-          gender: gender[1]
-        };
+          gender: gender[1],
+          dateFromNow: momentDate.locale("ru").fromNow(),
+          dateDiff: showDIff(momentDate)
+        }
+        ;
         arrayHerroes.push(generateObj);
       } else {
         if (match2) {
@@ -76,6 +91,7 @@ export class HeroService {
           var myRegexp4 = /"([a-zA-Z]+)"/gi;
           var gender = myRegexp4.exec(list[list.length - 1]);
 
+          let momentDate = moment("2051-05-03 16:05:10 +03:00", "YYYY-MM-DD hh:mm:ss Z");
           generateObj = {
             id: index,
             name: match2[1],
@@ -89,7 +105,9 @@ export class HeroService {
             level: parseInt(match2[3]),
             color: match2[5],
             guild: listGuild,
-            gender: gender[1]
+            gender: gender[1],
+            dateFromNow: momentDate.locale("ru").fromNow(),
+            dateDiff: showDIff(momentDate)
           };
 
           arrayHerroes.push(generateObj);
@@ -99,7 +117,8 @@ export class HeroService {
     });
     return arrayHerroes || {};
   }
-  private handleError(error: any) {
+
+  private handleError(error:any) {
     let errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
   }

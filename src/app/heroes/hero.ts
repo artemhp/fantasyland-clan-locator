@@ -11,4 +11,6 @@ export class Hero {
   style: string;
   guild: any;
   gender: string;
+  dateFromNow: any;
+  dateDiff: any;
 }
