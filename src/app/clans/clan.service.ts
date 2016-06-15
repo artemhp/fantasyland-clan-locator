@@ -7,10 +7,10 @@ declare var moment: any;
 @Injectable()
 export class HeroService {
   constructor(private http: Http) { }
-  private _heroesUrl = 'http://www.fantasyland.ru/cgi/technical_clan_status.php?clan_id=109';  // URL to web api
+  private _heroesUrl = localStorage.getItem('server')+'/technical_clan_status.php?clan_id=109';  // URL to web api
   getHeroes(clanId): Observable<Hero[]> {
 
-    this._heroesUrl = 'http://www.fantasyland.ru/cgi/technical_clan_status.php?clan_id=' + clanId;
+    this._heroesUrl = localStorage.getItem('server')+'/cgi/technical_clan_status.php?clan_id=' + clanId;
     return this.http.get(this._heroesUrl)
       .map(this.extractData)
       .catch(this.handleError);

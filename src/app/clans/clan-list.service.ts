@@ -53,7 +53,7 @@ export class ClanListService {
     var showIcon = "";
     this._ids.map(function(el, index) {
       if (el == id) {
-        showIcon = "http://fantasyland.ru/images/clans/" + this._imgs[index];
+        showIcon = localStorage.getItem('server')+"/images/clans/" + this._imgs[index];
       }
     }, this);
     return showIcon;

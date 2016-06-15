@@ -13,6 +13,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 bootstrap(AppComponent,
   [
     ...ENV_PROVIDERS,
+    ...HTTP_PROVIDERS,
     ...PROVIDERS,
     ...DIRECTIVES,
     ...PIPES,

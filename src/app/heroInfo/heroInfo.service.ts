@@ -10,10 +10,10 @@ export class HeroInfoService {
   constructor(private http:Http) {
   }
 
-  private _heroesUrl = 'http://fantasyland.ru/cgi/pl_info.php?login=Artem_The_Great';  // URL to web api
+  private _heroesUrl = localStorage.getItem('server')+'/cgi/pl_info.php?login=Artem_The_Great';  // URL to web api
 
   getHeroInfo(heroId):Observable<Hero[]> {
-    this._heroesUrl = 'http://fantasyland.ru/cgi/pl_info.php?login=' + heroId;
+    this._heroesUrl = localStorage.getItem('server')+'/cgi/pl_info.php?login=' + heroId;
     return this.http.get(this._heroesUrl)
       .map(this.extractData)
       .catch(this.handleError);

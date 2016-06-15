@@ -5,6 +5,7 @@ import { Home } from './pages/home';
 import { About } from './pages/about';
 // import {Hero} from './heroes/hero';
 
+localStorage.setItem('server', 'http://locator.deykun.com/api');
 
 @Component({
   selector: 'app',
