@@ -12,7 +12,7 @@ export class StorageService {
       {id: 65,name: "Хранители Вечности"},
       {id: 129,name: "S i n"},
       {id: 10,name: 'Орден Равновесия'},
-      {id: 66,name: 'Sigma'},
+      // {id: 66,name: 'Sigma'},
       {id: 109,name: 'Союз Эльфов'},
       {id: 16,name: 'Хранители Света'},
       {id: 194,name: 'The Shades'},
@@ -38,7 +38,7 @@ export class StorageService {
       {id: 164,name: 'Орден Восходящего Солнца'},
       {id: 174,name: 'Созвездие Славян'},
       {id: 113,name: 'Гильдия Художников'},
-      {id: 42,name: 'Знак Грома'},
+      // {id: 42,name: 'Знак Грома'},
       {id: 204,name: 'Орден Пылающих Драконов'},
   ];
 }

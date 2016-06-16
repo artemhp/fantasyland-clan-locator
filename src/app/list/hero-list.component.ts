@@ -47,7 +47,8 @@ export class HeroListComponent implements OnInit {
   model:any = {
     clan: localStorage['clan'] || 109,
     heroesActiveStatus: false,
-    sortBy: 'date'
+    sortBy: 'date',
+    showMap: false
   };
   subscription = {
     'getLocations': {},
@@ -88,6 +89,9 @@ export class HeroListComponent implements OnInit {
     this.getHeroes(this.model.clan);
   }
 
+  totalLocation = [];
+  totalLocationOffline = [];
+
   ngOnInit() {
 
     this.getHeroes(this.model.clan);
@@ -121,24 +125,73 @@ export class HeroListComponent implements OnInit {
 
   }
 
+  showLocation = function (el) {
+    if (this._storageService.locations && this._storageService.locations[parseInt(el)]) {
+      return this._storageService.locations[parseInt(el)];
+    } else {
+      return "";
+    }
+  };
+
+
+
   getHeroes(el) {
     this.subscriptionGetHeroes = this._heroService.getHeroes(el).subscribe(
+
       heroes => {
         let heroList;
+        let totalLocation = {};
         this.heroes = [];
+        this.totalLocation = [];
         heroList = heroes;
+        totalLocation = {};
+        let totalLocationOffline = {};
+        totalLocationOffline = {};
+
         heroList.map(function (el) {
           el['showDetails'] = false;
-          // el['dateFromNow'] = el.date.locale("ru").fromNow();
-          // el['dateDiff'] = this.showDIff(el.date);
           this.heroes.push(el);
+          if (this.showLocation(el.location1)) {
+            let locationName = this.showLocation(el.location1);
+            if (el.status) {
+              totalLocation[locationName] = totalLocation[locationName] + 1 || 1;
+            }
+            totalLocationOffline[locationName] = totalLocationOffline[locationName] + 1 || 1;
+          }
         }.bind(this));
+        for (let loc in totalLocation) {
+          if (totalLocation.hasOwnProperty(loc)) {
+            this.totalLocation.push({
+              location: loc,
+              count: totalLocation[loc]
+            });
+          }
+        }
+        for (let loc in totalLocationOffline) {
+          if (totalLocationOffline.hasOwnProperty(loc)) {
+            this.totalLocationOffline.push({
+              location: loc,
+              count: totalLocationOffline[loc]
+            });
+          }
+        }
+        this.showMap();
         this.heroesOnline = new FilterHeroesByOnline().transform(heroes, []).length;
       },
       error => {
         this.errorMessage = <any>error
       }
     );
+  }
+
+  showMap() {
+    jQuery(".map-item").css("display", "none");
+    this.totalLocation.map(function(el){
+      console.log(el);
+      setTimeout(() => {
+        jQuery("#"+el['location'].replace(" ", "-")).css('display', 'block').css('transform', 'scale('+(2+parseInt(el['count'])/3)+')');
+      },0);
+    });
   }
 
   showDIff(el) {
