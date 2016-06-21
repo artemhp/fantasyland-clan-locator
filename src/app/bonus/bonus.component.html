@@ -1,0 +1,17 @@
+<div *ngIf="clanBonus.length" class="clanBonusWrap">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="clanBonusTitle">
+        Клановые Бонусы:
+      </div>
+      <div class="clanBonusItem" *ngFor="let bonus of clanBonus">
+
+        <div class="">
+          <img title="{{bonus.name}}" src="http://fantasyland.ru/images/miscellaneous/{{bonus.img}}" alt="">
+          +{{bonus.value}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

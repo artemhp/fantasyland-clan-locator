@@ -8,6 +8,7 @@ import {HeroLocationService}   from '../location/hero-location.service';
 import {StorageService}   from '../shared/storage.service';
 
 import {HeroStyleDirective}   from '../heroes/hero.directive';
+import {Bonus}   from '../bonus/bonus.component';
 import {HeroLocationComponent}   from '../location/hero-location.component';
 import {HeroInfoComponent}   from '../heroInfo/heroInfo.component';
 import {HeroGuildComponent}   from '../heroes/hero-guild.component';
@@ -24,7 +25,7 @@ declare var jQuery:any;
 @Component({
   selector: 'hero-list',
   providers: [CommunicateService, HeroService, ClanListService, HeroLocationService], //HeroInfoService
-  directives: [HeroStyleDirective, HeroLocationComponent, HeroGuildComponent, HeroInfoComponent],
+  directives: [HeroStyleDirective, HeroLocationComponent, Bonus, HeroGuildComponent, HeroInfoComponent],
   pipes: [SortArray, ShowActive, FilterHeroesByOnline],
   template: require('app/list/hero-list.component.html')
 })
@@ -41,6 +42,7 @@ export class HeroListComponent implements OnInit {
   heroes:Hero[];
   heroesOnline;
   sortList;
+  heroesFirst;
   clanList:any = [];
   locations:any;
   rooms:any;
@@ -72,8 +74,6 @@ export class HeroListComponent implements OnInit {
   statusChange() {
     if (this.model.heroesActiveStatus) {
       this.heroes.map(function (el) {
-        console.log(el['name']);
-        console.log(el['dateDiff']);
         if (el['dateDiff'] < 120) {
           el['hidden'] = true;
         } else {
@@ -150,7 +150,10 @@ export class HeroListComponent implements OnInit {
         let totalLocationOffline = {};
         totalLocationOffline = {};
 
-        heroList.map(function (el) {
+        heroList.map(function (el, index) {
+          if (index == 0) {
+            this.heroesFirst = el['name'];
+          }
           el['showDetails'] = false;
           this.heroes.push(el);
           if (this.showLocation(el.location1)) {
@@ -189,7 +192,6 @@ export class HeroListComponent implements OnInit {
   showMap() {
     jQuery(".map-item").css("display", "none");
     this.totalLocation.map(function(el){
-      console.log(el);
       setTimeout(() => {
         jQuery("#"+el['location'].replace(" ", "-")).css('display', 'block').css('transform', 'scale('+(2+parseInt(el['count'])/3)+')');
       },0);
