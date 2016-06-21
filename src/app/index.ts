@@ -1,5 +1,6 @@
 import {StorageService}   from './shared/storage.service';
 import {UiFunctions}   from './shared/ui-functions.service';
+import {DateService}   from './shared/date.service';
 
 // App
 export {AppComponent} from './app.component';
@@ -7,6 +8,7 @@ export {AppComponent} from './app.component';
 // Application wide providers
 export const APP_PROVIDERS = [
     StorageService,
-    UiFunctions
+    UiFunctions,
+    DateService
   // AppState
 ];

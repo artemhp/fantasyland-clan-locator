@@ -72,6 +72,8 @@ export class HeroListComponent implements OnInit {
   statusChange() {
     if (this.model.heroesActiveStatus) {
       this.heroes.map(function (el) {
+        console.log(el['name']);
+        console.log(el['dateDiff']);
         if (el['dateDiff'] < 120) {
           el['hidden'] = true;
         } else {
@@ -153,7 +155,7 @@ export class HeroListComponent implements OnInit {
           this.heroes.push(el);
           if (this.showLocation(el.location1)) {
             let locationName = this.showLocation(el.location1);
-            if (el.status) {
+            if (el.status == "online" || el.status == "invisible") {
               totalLocation[locationName] = totalLocation[locationName] + 1 || 1;
             }
             totalLocationOffline[locationName] = totalLocationOffline[locationName] + 1 || 1;

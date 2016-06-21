@@ -21,7 +21,7 @@ export class SortArray implements PipeTransform {
       let onlineArray = [];
       let offlineArray = [];
       value.map(function(el){
-        if (el['status']) {
+        if (el['status'] == "online" || el['status'] == "invisible") {
           onlineArray.push(el);
         } else {
           offlineArray.push(el);

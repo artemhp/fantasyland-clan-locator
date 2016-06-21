@@ -10,7 +10,7 @@ export class FilterHeroesByOnline implements PipeTransform {
     var result = [];
     if (value) {
       value.map(function(el) {
-        if (el.status == true) {
+        if (el.status == 'online' || el.status == 'invisible') {
             result.push(el);
         }
 

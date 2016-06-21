@@ -195,7 +195,7 @@
       <div class="col-xs-4">
         <div class="heroName">
           <span class="heroName-level">[Lvl:{{hero.level}}]</span>
-          <span class="heroName-guild"><guild *ngFor="let guild of hero.guild" guildId="{{guild}}"></guild></span>
+          <span class="heroName-guild"><guild *ngFor="let guild of hero.guild" guildId="{{guild.id}}"></guild></span>
           <span class="heroName-name hero-login"><span [heroStyle]="{style: hero.style, color: hero.color}">{{ hero.name }}</span></span>
         </div>
       </div>
@@ -230,12 +230,12 @@
       </div>
       <div class="col-xs-2">
         <div class="" *ngIf="hero.location1 !== 'Unknown'">
-          <span *ngIf="hero.status" class="text-success">Online</span>
-            <span class="text-danger" *ngIf="!hero.status">
+          <span *ngIf="hero.status == 'online'" class="text-success">Online</span>
+            <span class="text-danger" *ngIf="hero.status == 'offline'">
               {{ hero.dateFromNow }}
             </span>
         </div>
-        <div *ngIf="hero.location1 == 'Unknown'">
+        <div *ngIf="hero.status == 'invisible'">
           <em>
             <small>Неизвестно</small>
           </em>

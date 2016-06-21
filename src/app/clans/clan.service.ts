@@ -1,120 +1,109 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Hero}           from '../heroes/hero';
+import {DateService}   from '../shared/date.service';
 import {Observable}     from 'rxjs/Observable';
 declare var moment:any;
 
 @Injectable()
 export class HeroService {
-  constructor(private http:Http) {
+  constructor(private http:Http,
+              private dateService:DateService) {
   }
 
-  private _heroesUrl = localStorage.getItem('server') + '/technical_clan_status.php?clan_id=109';  // URL to web api
+  private _heroesUrl = localStorage.getItem('server') + '/cgi/technical_clan_status.php?clan_id=';  // URL to web api
+
+
+  // Get Array of Heroes
   getHeroes(clanId):Observable<Hero[]> {
-
-    this._heroesUrl = localStorage.getItem('server') + '/cgi/technical_clan_status.php?clan_id=' + clanId;
-    return this.http.get(this._heroesUrl)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.http.get(
+      // Plain Text. Not JSON
+      this._heroesUrl + clanId
+    ).map(
+      // Get and transform data
+      this.extractData.bind(this)
+    ).catch(
+      // Handle Error
+      this.handleError
+    );
   }
-
 
   private extractData(res:Response) {
+    let arrayHerroes:Hero[] = [];
+
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
 
-    function showDIff(el) {
-      let now, heroDate, diff;
-      now = moment().utcOffset(3);
-      heroDate = el;
-      diff = now.diff(heroDate, 'minutes');
-      return diff;
-    }
+    let result = res.text();
 
-    let arrayHerroes:any[] = [];
+    // Look for "Hello"
+    var rePattern = /(\d)+#(\d)+#(\d)+#([^#"]+)#(0|\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})(\s0#0#0;|#(\d+))#w\("\4",(\d+),(\d+)?,([0-4]{1})?,"([\d\w]+)?",([\d]+),"([^"]+)\)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",([\d]+),\s?"([\w])"\);/gi;
+    let arrMatch;
+    let indexObj = 0;
+    while (arrMatch = rePattern.exec(result)) {
+      let generateObj;
 
-    res.text().split(");").map(function (el, index) {
+      let statusOnline;
+      let momentDate;
+      let fromNow;
+      let dateDiffValue;
 
-      let infoPart = el.split("#w");
-      var myRegexp1 = /([0-9]+#[0-9]+#[0-9]+)#([\w\u0400-\u04FF-_0-9]+)#([0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+)#([0-9]+)/gi;
-      var match1 = myRegexp1.exec(infoPart[0]);
-      var myRegexp2 = /"([\w\u0400-\u04FF-_0-9]+)",([0-9]+),([0-9]+),([0-9]+),"([0-9a-z]+)",?(.+)/gi;
-      var match2 = myRegexp2.exec(infoPart[1]);
-
-
-      var generateObj;
-
-      if (match1 && match2) {
-
-        var myRegexp3 = /,"[\w\u0400-\u04FF\.\ \-)\[\]0-9&;’\s]+",/gi;
-        var list = match2[6].split(myRegexp3);
-        var listGuild = list.slice(0, -1);
-        var myRegexp4 = /"([a-zA-Z]+)"/gi;
-        var gender = myRegexp4.exec(list[list.length - 1]);
-
-        var status = match1[1].split("#");
-        var statusOnline = false;
-
-        if (status[0] && status[0] == "1") {
-          statusOnline = true;
-          match1[3] = "2050-05-03 16:05:10";
-        }
-
-
-        let momentDate = moment(match1[3] + " +03:00", "YYYY-MM-DD hh:mm:ss Z");
-        generateObj = {
-          id: index,
-          name: match1[2],
-          status: statusOnline,
-          location1: status[1],
-          location2: status[2],
-          location: match1[1],
-          combat: match1[4],
-          date: momentDate,
-          style: match2[4],
-          level: match2[3],
-          color: match2[5],
-          guild: listGuild,
-          gender: gender[1],
-          dateFromNow: momentDate.locale("ru").fromNow(),
-          dateDiff: showDIff(momentDate)
-        }
-        ;
-        arrayHerroes.push(generateObj);
+      if (arrMatch[5] != 0) {
+        momentDate = moment(arrMatch[5] + " +03:00", "YYYY-MM-DD hh:mm:ss Z");
+        fromNow =  momentDate.locale("ru").fromNow();
+        dateDiffValue = this.dateService.showDIff(momentDate)
       } else {
-        if (match2) {
-
-          var myRegexp3 = /,"[\w\u0400-\u04FF\.\ \-)\[\]0-9&;’\s]+",/gi;
-          var list = match2[6].split(myRegexp3);
-          var listGuild = list.slice(0, -1);
-          var myRegexp4 = /"([a-zA-Z]+)"/gi;
-          var gender = myRegexp4.exec(list[list.length - 1]);
-
-          let momentDate = moment("2051-05-03 16:05:10 +03:00", "YYYY-MM-DD hh:mm:ss Z");
-          generateObj = {
-            id: index,
-            name: match2[1],
-            status: false,
-            location1: "Unknown",
-            location2: "Unknown",
-            location: "Unknown",
-            combat: "0",
-            date: moment("2051-05-03 16:05:10 +03:00", "YYYY-MM-DD hh:mm:ss Z"),
-            style: match2[4],
-            level: parseInt(match2[3]),
-            color: match2[5],
-            guild: listGuild,
-            gender: gender[1],
-            dateFromNow: momentDate.locale("ru").fromNow(),
-            dateDiff: showDIff(momentDate)
-          };
-
-          arrayHerroes.push(generateObj);
-        }
-
+        momentDate = false;
+        fromNow = false;
+        dateDiffValue = 0;
       }
-    });
+      let listGuild = [
+        {
+          id: arrMatch[15],
+          status: arrMatch[16],
+          exp: arrMatch[19]
+        },
+        {
+          id: arrMatch[21],
+          status: arrMatch[22],
+          exp: arrMatch[25]
+        },
+        {
+          id: arrMatch[27],
+          status: arrMatch[28],
+          exp: arrMatch[31]
+        }
+      ];
+
+      if (arrMatch[1] == "1") {
+        statusOnline = "online";
+      } else if (arrMatch[1] == "2") {
+        statusOnline = "offline";
+      } else if (arrMatch[1] == "3") {
+        statusOnline = "invisible";
+      }
+
+      generateObj = {
+        id: indexObj,
+        name: arrMatch[4],
+        status: statusOnline,
+        location1: arrMatch[2],
+        location2: arrMatch[3],
+        location: "",
+        combat: arrMatch[7],
+        date: momentDate,
+        style: arrMatch[10],
+        color: arrMatch[11],
+        level: arrMatch[9],
+        guild: listGuild,
+        gender: arrMatch[33],
+        dateFromNow: fromNow,
+        dateDiff: dateDiffValue
+      };
+      arrayHerroes.push(generateObj);
+      indexObj++;
+    }
     return arrayHerroes || {};
   }
 
@@ -122,5 +111,4 @@ export class HeroService {
     let errMsg = error.message || 'Server error';
     return Observable.throw(errMsg);
   }
-
 }
