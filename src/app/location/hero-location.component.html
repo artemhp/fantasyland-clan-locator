@@ -1,5 +1,5 @@
 <small>
-    <strong>
-        {{locationTitle || "Пустош"}}
-    </strong> - {{roomTitle || "Пустош"}}
+    <strong [innerHTML] = "locationTitle || 'Пустошь'">
+    </strong> -
+    <span [innerHTML] = "roomTitle || 'Пустошь'"></span>
 </small>

@@ -90,6 +90,7 @@ export class HeroService {
         status: statusOnline,
         location1: arrMatch[2],
         location2: arrMatch[3],
+        clanStatus: arrMatch[13],
         location: "",
         combat: arrMatch[7],
         date: momentDate,
