@@ -14,6 +14,7 @@ export class ClanListService {
       {id: 1, name: 'LDK'},
       {id: 3, name: 'Союз Древних'},
       {id: 136, name: "The Legends" },
+      {id: 21, name: "Стражи" },
       {id: 65,name: "Хранители Вечности"},
       {id: 129,name: "S i n"},
       {id: 10,name: 'Орден Равновесия'},

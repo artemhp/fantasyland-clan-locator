@@ -22,4 +22,9 @@ export class HeroGuildComponent implements OnInit {
       this.guildTitleText = this._uiFunctions.showGuildName(this._guildId) + ' ' + this._guildText;
   }
 
+  ngOnChanges() {
+      this.guildSrc = this._uiFunctions.showGuildImg(this._guildId);
+      this.guildTitleText = this._uiFunctions.showGuildName(this._guildId) + ' ' + this._guildText;
+  }
+
 }

@@ -38,7 +38,7 @@ export class HeroService {
     let result = res.text();
 
     // Look for "Hello"
-    var rePattern = /(\d)+#(\d)+#(\d)+#([^#"]+)#(0|\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})(\s0#0#0;|#(\d+))#w\("\4",(\d+),(\d+)?,([0-4]{1})?,"([\d\w]+)?",([\d]+),"([^"]+)\)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",([\d]+),\s?"([\w])"\);/gi;
+    var rePattern = /(\d+)#(\d+)#(\d+)#([^#"]+)#(0|\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})(\s0#0#0;|#(\d+))#w\("\4",(\d+),(\d+)?,([0-4]{1})?,"([\d\w]+)?",([\d]+),"([^"]+)\)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",(([\d]+),"([а-яА-Я\s-]+)?(\))?(\[([\d]+)])?)",([\d]+),\s?"([\w])"\);/gi;
     let arrMatch;
     let indexObj = 0;
     while (arrMatch = rePattern.exec(result)) {
@@ -88,6 +88,7 @@ export class HeroService {
         id: indexObj,
         name: arrMatch[4],
         status: statusOnline,
+        clan: arrMatch[12],
         location1: arrMatch[2],
         location2: arrMatch[3],
         clanStatus: arrMatch[13],
@@ -102,6 +103,12 @@ export class HeroService {
         dateFromNow: fromNow,
         dateDiff: dateDiffValue
       };
+
+
+      if (arrMatch[4] == "Artem_The_Great") {
+        console.log(generateObj);
+      }
+
       arrayHerroes.push(generateObj);
       indexObj++;
     }

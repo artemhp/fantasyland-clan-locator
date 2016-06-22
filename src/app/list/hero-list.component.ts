@@ -15,6 +15,7 @@ import {HeroGuildComponent}   from '../heroes/hero-guild.component';
 
 import {SortArray}   from './sortArray.pipe';
 import {FilterHeroesByOnline}   from './filterHeroesByOnline.pipe';
+import {FilterHeroesByCombat}   from './filterHeroesByCombat.pipe';
 import {ShowActive}   from './showActive.pipe';
 import {Subscription} from "rxjs/Rx";
 
@@ -26,7 +27,7 @@ declare var jQuery:any;
   selector: 'hero-list',
   providers: [CommunicateService, HeroService, ClanListService, HeroLocationService], //HeroInfoService
   directives: [HeroStyleDirective, HeroLocationComponent, Bonus, HeroGuildComponent, HeroInfoComponent],
-  pipes: [SortArray, ShowActive, FilterHeroesByOnline],
+  pipes: [SortArray, ShowActive, FilterHeroesByOnline, FilterHeroesByCombat],
   template: require('app/list/hero-list.component.html')
 })
 
@@ -41,8 +42,10 @@ export class HeroListComponent implements OnInit {
   errorMessage:string;
   heroes:Hero[];
   heroesOnline;
+  heroesCombat;
   sortList;
   heroesFirst;
+  heroClanFirst;
   clanList:any = [];
   locations:any;
   rooms:any;
@@ -143,16 +146,19 @@ export class HeroListComponent implements OnInit {
       heroes => {
         let heroList;
         let totalLocation = {};
+        let totalLocationOffline = {};
         this.heroes = [];
         this.totalLocation = [];
+        this.totalLocationOffline = [];
+
         heroList = heroes;
-        totalLocation = {};
-        let totalLocationOffline = {};
-        totalLocationOffline = {};
 
         heroList.map(function (el, index) {
           if (index == 0) {
             this.heroesFirst = el['name'];
+            this.heroClanFirst = {
+              id: el['clan']
+            };
           }
           el['showDetails'] = false;
           this.heroes.push(el);
@@ -182,6 +188,7 @@ export class HeroListComponent implements OnInit {
         }
         this.showMap();
         this.heroesOnline = new FilterHeroesByOnline().transform(heroes, []).length;
+        this.heroesCombat = new FilterHeroesByCombat().transform(heroes, []).length;
       },
       error => {
         this.errorMessage = <any>error

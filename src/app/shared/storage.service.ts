@@ -12,6 +12,7 @@ export class StorageService {
       {id: 65,name: "Хранители Вечности"},
       {id: 129,name: "S i n"},
       {id: 10,name: 'Орден Равновесия'},
+      {id: 21,name: 'Стражи'},
       // {id: 66,name: 'Sigma'},
       {id: 109,name: 'Союз Эльфов'},
       {id: 16,name: 'Хранители Света'},
