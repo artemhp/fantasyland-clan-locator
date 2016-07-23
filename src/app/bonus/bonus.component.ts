@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {BonusService}   from './bonus.service';
+import {BonusI}   from './bonus';
 import {StorageService}   from '../shared/storage.service';
 
 @Component({
@@ -15,38 +16,35 @@ export class Bonus implements OnInit {
 
   private _bonusHero;
   errorMessage:string;
-  subscriptionGetLocations;
-  clanBonus = [];
+  private subscriptionGetLocations:any;
+  private clanBonus:Array<BonusI> = [];
 
-  constructor(private _bonusService:BonusService,
-              private _storageService:StorageService) {
+  constructor(private _bonusService:BonusService) {
   }
 
   private getBonus = function (name) {
     this.subscriptionGetLocations = this._bonusService.getBonus(name)
       .subscribe(
-        el => {
-          this.clanBonus = el;
-        },
-        error => {
-          this.errorMessage = <any>error
-        }
+        el => this.clanBonus = el,
+        error => this.errorMessage = error
       );
   };
 
   ngOnInit() {
     this.clanBonus = [];
-    console.log(this._bonusHero);
     this.getBonus(this._bonusHero);
-
   }
-
 
   ngOnChanges() {
     this.clanBonus = [];
-    console.log(this._bonusHero);
+    if (this.subscriptionGetLocations) {
+      this.subscriptionGetLocations.unsubscribe();
+    }
     this.getBonus(this._bonusHero);
   }
 
+  ngOnDestroy() {
+    this.subscriptionGetLocations.unsubscribe();
+  }
 
 }

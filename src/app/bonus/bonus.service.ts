@@ -16,11 +16,11 @@ export class BonusService {
 
   getBonus(name) {
     return this.http.get(this.getHeroLink(name))
-      .map(this.extracBonus)
+      .map(this.extractBonus)
       .catch(this.handleError);
   }
 
-  private extracBonus(res:Response) {
+  private extractBonus(res:Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
